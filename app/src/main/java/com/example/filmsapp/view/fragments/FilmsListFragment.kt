@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
@@ -47,7 +49,21 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
 
         binding.filmsRV.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(requireContext())
+
+            val manager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+
+            manager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when(filmsListAdapter.items[position]) {
+                        is FilmsListRVItem.Film -> 1
+                        is FilmsListRVItem.Genre -> 1
+                        is FilmsListRVItem.Title -> 2
+                    }
+                }
+            }
+
+            layoutManager = manager
+
             adapter = filmsListAdapter
         }
     }
