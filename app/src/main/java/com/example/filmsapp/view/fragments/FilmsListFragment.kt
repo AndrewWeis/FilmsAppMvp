@@ -7,18 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
-import com.example.filmsapp.model.network.response.NetworkFilm
 import com.example.filmsapp.view.FilmsListPresenter
 import com.example.filmsapp.view.FilmsListView
+import com.example.filmsapp.view.adapters.FilmsListAdapter
+import com.example.filmsapp.view.adapters.FilmsListRVItem
+import java.util.*
 
 class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView {
 
     private lateinit var presenter: FilmsListPresenter
-    private lateinit var films: List<NetworkFilm>
+    private lateinit var films: List<FilmsListRVItem.Film>
 
     private lateinit var binding: FragmentFilmsListBinding
+
+    private lateinit var filmsListAdapter: FilmsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,15 +32,45 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
     ): View? {
         binding = FragmentFilmsListBinding.inflate(inflater)
 
+        setUpRecyclerView()
+
         presenter = FilmsListPresenter(this)
         presenter.getFilms()
+
 
 
         return binding.root
     }
 
-    override fun showListFilms(list: List<NetworkFilm>) {
-        Log.i("RetrofitCheck", list.toString())
+    private fun setUpRecyclerView() {
+        filmsListAdapter = FilmsListAdapter()
+
+        binding.filmsRV.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = filmsListAdapter
+        }
+    }
+
+    override fun showListFilms(list: List<FilmsListRVItem.Film>) {
+        val filmsList = mutableListOf<FilmsListRVItem>()
+        val genres: SortedSet<String> = sortedSetOf()
+
+        filmsList.add(FilmsListRVItem.Title("Жанры"))
+
+        list.forEach { film ->
+            film.genres?.forEach { genre ->
+                genres.add(genre)
+            }
+        }
+
+        genres.forEach { filmsList.add(FilmsListRVItem.Genre(it)) }
+
+        filmsList.add(FilmsListRVItem.Title("Фильмы"))
+
+        filmsList.addAll(list)
+
+        filmsListAdapter.items = filmsList
     }
 
     override fun showError(e: String) {

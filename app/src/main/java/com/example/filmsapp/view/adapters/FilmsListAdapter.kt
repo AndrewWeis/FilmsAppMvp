@@ -11,7 +11,7 @@ import com.example.filmsapp.databinding.ItemTitleBinding
 
 class FilmsListAdapter: RecyclerView.Adapter<FilmsListViewHolder>() {
 
-    var items = listOf<FilmsListRecyclerViewItem>()
+    var items = listOf<FilmsListRVItem>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -35,9 +35,9 @@ class FilmsListAdapter: RecyclerView.Adapter<FilmsListViewHolder>() {
 
     override fun onBindViewHolder(holder: FilmsListViewHolder, position: Int) {
         when(holder) {
-            is FilmsListViewHolder.FilmViewHolder -> holder.bind(items[position] as FilmsListRecyclerViewItem.Film)
-            is FilmsListViewHolder.GenreViewHolder -> holder.bind(items[position] as FilmsListRecyclerViewItem.Genre)
-            is FilmsListViewHolder.TitleViewHolder -> holder.bind(items[position] as FilmsListRecyclerViewItem.Title)
+            is FilmsListViewHolder.FilmViewHolder -> holder.bind(items[position] as FilmsListRVItem.Film)
+            is FilmsListViewHolder.GenreViewHolder -> holder.bind(items[position] as FilmsListRVItem.Genre)
+            is FilmsListViewHolder.TitleViewHolder -> holder.bind(items[position] as FilmsListRVItem.Title)
         }
     }
 
@@ -45,9 +45,9 @@ class FilmsListAdapter: RecyclerView.Adapter<FilmsListViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return when(items[position]){
-            is FilmsListRecyclerViewItem.Film -> R.layout.item_film
-            is FilmsListRecyclerViewItem.Genre -> R.layout.item_genre
-            is FilmsListRecyclerViewItem.Title -> R.layout.item_title
+            is FilmsListRVItem.Film -> R.layout.item_film
+            is FilmsListRVItem.Genre -> R.layout.item_genre
+            is FilmsListRVItem.Title -> R.layout.item_title
         }
     }
 }
