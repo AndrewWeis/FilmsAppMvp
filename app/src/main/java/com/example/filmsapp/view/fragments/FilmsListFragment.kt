@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
 import com.example.filmsapp.view.FilmsListPresenter
@@ -69,24 +68,25 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
     }
 
     override fun showListFilms(list: List<FilmsListRVItem.Film>) {
-        val filmsList = mutableListOf<FilmsListRVItem>()
+        val rvItems = mutableListOf<FilmsListRVItem>()
         val genres: SortedSet<String> = sortedSetOf()
+        val sortedFilmsList = list.sortedBy { it.localName }
 
-        filmsList.add(FilmsListRVItem.Title("Жанры"))
+        rvItems.add(FilmsListRVItem.Title("Жанры"))
 
-        list.forEach { film ->
+        sortedFilmsList.forEach { film ->
             film.genres?.forEach { genre ->
                 genres.add(genre)
             }
         }
 
-        genres.forEach { filmsList.add(FilmsListRVItem.Genre(it)) }
+        genres.forEach { rvItems.add(FilmsListRVItem.Genre(it)) }
 
-        filmsList.add(FilmsListRVItem.Title("Фильмы"))
+        rvItems.add(FilmsListRVItem.Title("Фильмы"))
 
-        filmsList.addAll(list)
-
-        filmsListAdapter.items = filmsList
+        rvItems.addAll(sortedFilmsList)
+        sortedFilmsList.forEach { Log.i("Test", it.toString()) }
+        filmsListAdapter.items = rvItems
     }
 
     override fun showError(e: String) {

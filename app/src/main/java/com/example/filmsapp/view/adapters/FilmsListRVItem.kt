@@ -1,5 +1,6 @@
 package com.example.filmsapp.view.adapters
 
+import com.example.filmsapp.smartTruncate
 import com.squareup.moshi.Json
 
 sealed class FilmsListRVItem {
@@ -16,8 +17,18 @@ sealed class FilmsListRVItem {
         val rating: Double?,
         @Json(name = "image_url") val imageUrl: String?,
         val description: String?,
-        val genres: List<String>?
-    ) : FilmsListRVItem()
+        val genres: List<String>?,
+
+        /**
+         * Short description is used for displaying truncated descriptions in the UI
+         */
+        val shortTitle: String? = localName?.smartTruncate(16)
+
+    ) : FilmsListRVItem() {
+        override fun toString(): String {
+            return "Film(id=$id, localName=$localName, imageUrl=$imageUrl, genres=$genres)"
+        }
+    }
 
     class Genre(
         val name: String,

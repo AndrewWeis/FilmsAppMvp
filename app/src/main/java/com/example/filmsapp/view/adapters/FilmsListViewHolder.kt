@@ -19,9 +19,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding): RecyclerView.ViewHolder(
 
     class FilmViewHolder(private val binding: ItemFilmBinding): FilmsListViewHolder(binding) {
         fun bind(film: FilmsListRVItem.Film) {
-            binding.txFilmTitle.text = film.name ?: ""
-            Log.i("ImageTest",film.id.toString())
-            Log.i("ImageTest",film.imageUrl ?: "null")
+            binding.txFilmTitle.text = film.shortTitle ?: ""
             binding.previewImage.loadImage(film.imageUrl)
         }
     }
