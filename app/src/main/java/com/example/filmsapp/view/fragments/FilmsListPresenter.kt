@@ -1,6 +1,5 @@
 package com.example.filmsapp.view.fragments
 
-import android.util.Log
 import com.example.filmsapp.model.network.ApiService
 import com.example.filmsapp.model.network.response.FilmResponse
 import com.example.filmsapp.view.FilmsListView
@@ -13,14 +12,16 @@ class FilmsListPresenter(
 ) {
 
     fun getFilms() {
+        view?.showLoading()
+
         ApiService.retrofitService.getFilms().enqueue( object: Callback<FilmResponse> {
             override fun onFailure(call: Call<FilmResponse>, t: Throwable) {
-                //_response.value = "Failure: " + t.message
-                Log.i("RetrofitCheck", "Failure: " + t.message)
+                view?.stopLoading()
+                view?.showError(t.message.toString())
             }
 
             override fun onResponse(call: Call<FilmResponse>, response: Response<FilmResponse>) {
-                //_response.value = response.body()
+                view?.stopLoading()
                 view?.showListFilms(response.body()?.films ?: listOf())
             }
         })

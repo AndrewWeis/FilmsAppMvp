@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
@@ -16,12 +17,14 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
     private lateinit var presenter: FilmsListPresenter
     private lateinit var films: List<Film>
 
+    private lateinit var binding: FragmentFilmsListBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFilmsListBinding.inflate(inflater)
+        binding = FragmentFilmsListBinding.inflate(inflater)
 
         presenter = FilmsListPresenter(this)
         presenter.getFilms()
@@ -34,16 +37,17 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         Log.i("RetrofitCheck", list.toString())
     }
 
-    override fun showError() {
-        TODO("Not yet implemented")
+    override fun showError(e: String) {
+        Log.i("RetrofitCheck", "Failure: $e")
+        Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_SHORT).show()
     }
 
     override fun showLoading() {
-        TODO("Not yet implemented")
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     override fun stopLoading() {
-        TODO("Not yet implemented")
+        binding.progressBar.visibility = View.GONE
     }
 
     override fun onDestroy() {
