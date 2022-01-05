@@ -9,14 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
-import com.example.filmsapp.model.network.response.Film
+import com.example.filmsapp.model.network.response.NetworkFilm
 import com.example.filmsapp.view.FilmsListPresenter
 import com.example.filmsapp.view.FilmsListView
 
 class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView {
 
     private lateinit var presenter: FilmsListPresenter
-    private lateinit var films: List<Film>
+    private lateinit var films: List<NetworkFilm>
 
     private lateinit var binding: FragmentFilmsListBinding
 
@@ -34,7 +34,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         return binding.root
     }
 
-    override fun showListFilms(list: List<Film>) {
+    override fun showListFilms(list: List<NetworkFilm>) {
         Log.i("RetrofitCheck", list.toString())
     }
 
