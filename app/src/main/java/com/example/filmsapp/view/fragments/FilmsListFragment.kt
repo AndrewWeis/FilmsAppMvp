@@ -38,13 +38,22 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         setUpRecyclerView()
 
         presenter = FilmsListPresenter(this, viewModel)
+
+        /**
+         * Case 1. When a fragment is created for the first time, we load data from a remote service
+         * Case 2. When a fragment was overlapped by another fragment
+         * Case 3. When a fragment is completely recreated, for example, when changing orientation
+         */
         if (savedInstanceState == null) {
-            presenter.getFilms()
+            if (viewModel.filmsListRVItems.isNotEmpty()) {
+                presenter.restoreItems(viewModel.filmsListRVItems)
+            } else {
+                presenter.getFilms()
+            }
+        } else {
+            presenter.restoreItems(viewModel.filmsListRVItems)
         }
 
-        viewModel.filmsListRVItems.observe(viewLifecycleOwner) {
-            presenter.restoreItems(it)
-        }
 
         return binding.root
     }
@@ -118,7 +127,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
 
         rvItems.addAll(sortedFilmsList)
 
-        viewModel.initFilmsListRVItems(rvItems.toList())
+        viewModel.filmsListRVItems = rvItems.toList()
 
         filmsListAdapter.items = rvItems
     }
