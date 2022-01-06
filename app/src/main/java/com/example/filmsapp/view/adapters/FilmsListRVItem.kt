@@ -5,11 +5,11 @@ import com.squareup.moshi.Json
 
 sealed class FilmsListRVItem {
 
-    class Title(
+    data class Title(
         val title: String
     ) : FilmsListRVItem()
 
-    class Film(
+    data class Film(
         val id: Long?,
         @Json(name = "localized_name") val localName: String?,
         val name: String?,
@@ -26,7 +26,7 @@ sealed class FilmsListRVItem {
 
     ) : FilmsListRVItem()
 
-    class Genre(
+    data class Genre(
         val name: String,
         val isSelected: Boolean = false
     ) : FilmsListRVItem()

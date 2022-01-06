@@ -17,6 +17,7 @@ import com.example.filmsapp.view.adapters.FilmsListAdapter
 import com.example.filmsapp.view.adapters.FilmsListRVItem
 import java.util.*
 
+
 class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView {
 
     private lateinit var presenter: FilmsListPresenter
@@ -53,6 +54,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
             }
         })
 
+
         binding.filmsRV.apply {
             setHasFixedSize(true)
 
@@ -67,9 +69,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
                     }
                 }
             }
-
             layoutManager = manager
-
             adapter = filmsListAdapter
         }
     }

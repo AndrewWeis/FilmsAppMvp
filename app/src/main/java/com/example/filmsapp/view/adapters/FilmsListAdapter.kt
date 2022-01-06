@@ -3,20 +3,30 @@ package com.example.filmsapp.view.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.ItemFilmBinding
 import com.example.filmsapp.databinding.ItemGenreBinding
 import com.example.filmsapp.databinding.ItemTitleBinding
 
-class FilmsListAdapter(val onClickListener: OnClickListener?): RecyclerView.Adapter<FilmsListViewHolder>() {
+class FilmsListAdapter(
+    private val onClickListener: OnClickListener?
+): RecyclerView.Adapter<FilmsListViewHolder>() {
 
     var items = listOf<FilmsListRVItem>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
+            val diffCallBack = ItemDiffCallback(field, value)
+            val diffResult = DiffUtil.calculateDiff(diffCallBack)
             field = value
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsListViewHolder {
         return when(viewType) {
@@ -60,4 +70,44 @@ class FilmsListAdapter(val onClickListener: OnClickListener?): RecyclerView.Adap
     class OnClickListener(val clickListener: (item: FilmsListRVItem) -> Unit) {
         fun onClick(item: FilmsListRVItem) = clickListener(item)
     }
+}
+
+class ItemDiffCallback(
+    private val oldList: List<FilmsListRVItem>,
+    private val newList: List<FilmsListRVItem>
+): DiffUtil.Callback() {
+
+    override fun getOldListSize(): Int = oldList.size
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldItem = oldList[oldItemPosition]
+        val newItem = newList[newItemPosition]
+
+        return if (oldItem is FilmsListRVItem.Genre && newItem is FilmsListRVItem.Genre) {
+            oldItem.name == newItem.name
+        } else if (oldItem is FilmsListRVItem.Film && newItem is FilmsListRVItem.Film) {
+            oldItem.id == newItem.id
+        } else if (oldItem is FilmsListRVItem.Title && newItem is FilmsListRVItem.Title) {
+            oldItem.title == newItem.title
+        } else {
+            false
+        }
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldItem = oldList[oldItemPosition]
+        val newItem = newList[newItemPosition]
+
+        return if (oldItem is FilmsListRVItem.Genre && newItem is FilmsListRVItem.Genre) {
+            oldItem == newItem
+        } else if (oldItem is FilmsListRVItem.Film && newItem is FilmsListRVItem.Film) {
+            oldItem == newItem
+        } else if (oldItem is FilmsListRVItem.Title && newItem is FilmsListRVItem.Title) {
+            oldItem == newItem
+        } else {
+            false
+        }
+    }
+
 }
