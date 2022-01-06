@@ -87,7 +87,13 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
             }
         }
 
-        genres.forEach { rvItems.add(FilmsListRVItem.Genre(it)) }
+        genres.forEach {
+            if (it == genre) {
+                rvItems.add(FilmsListRVItem.Genre(it, true))
+            } else {
+                rvItems.add(FilmsListRVItem.Genre(it))
+            }
+        }
 
         rvItems.add(FilmsListRVItem.Title("Фильмы"))
 

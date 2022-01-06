@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="genreClick"
             type="com.example.filmsapp.view.adapters.FilmsListAdapter.OnClickListener" />
+
         <variable
             name="genre"
             type="com.example.filmsapp.view.adapters.FilmsListRVItem.Genre" />
@@ -15,9 +17,10 @@
     <Button
         android:id="@+id/genreBtn"
         style="@style/genreBtn"
-        android:onClick="@{() -> genreClick.onClick(genre)}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:onClick="@{() -> genreClick.onClick(genre)}"
         android:text="@{genre.name}"
+        app:selectGenre="@{genre.selected}"
         tools:text="Genre" />
 </layout>

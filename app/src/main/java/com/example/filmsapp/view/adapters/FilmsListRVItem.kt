@@ -24,14 +24,11 @@ sealed class FilmsListRVItem {
          */
         val shortTitle: String? = localName?.smartTruncate(16)
 
-    ) : FilmsListRVItem() {
-        override fun toString(): String {
-            return "Film(id=$id, localName=$localName, imageUrl=$imageUrl, genres=$genres)"
-        }
-    }
+    ) : FilmsListRVItem()
 
     class Genre(
         val name: String,
+        val isSelected: Boolean = false
     ) : FilmsListRVItem()
 
 }

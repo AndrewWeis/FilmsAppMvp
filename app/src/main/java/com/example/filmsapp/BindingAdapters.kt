@@ -1,5 +1,6 @@
 package com.example.filmsapp
 
+import android.widget.Button
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -23,5 +24,14 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.image_not_found))
             .into(imgView)
+    }
+}
+
+@BindingAdapter("selectGenre")
+fun selectGenre(btn: Button, isSelected: Boolean) {
+    if (isSelected) {
+        btn.setBackgroundColor(ContextCompat.getColor(btn.context, R.color.teal_700))
+    } else {
+        btn.setBackgroundColor(ContextCompat.getColor(btn.context, R.color.primaryBlack))
     }
 }
