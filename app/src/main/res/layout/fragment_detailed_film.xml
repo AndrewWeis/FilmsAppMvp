@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragments.DetailedFilmFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="film"
+            type="com.example.filmsapp.view.adapters.FilmsListRVItem.Film" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/background"
+        android:padding="@dimen/margin_normal"
+        tools:context=".view.fragments.DetailedFilmFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            app:bindImage="@{film.imageUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/image_not_found" />
+
+        <TextView
+            android:id="@+id/titleTx"
+            style="@style/txFilmDetailed"
+            android:text="@{film.name}"
+            app:layout_constraintStart_toEndOf="@id/previewImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/previewImage"
+            tools:text="Название фильма" />
+
+        <TextView
+            android:id="@+id/yearTx"
+            style="@style/txFilmDetailed"
+            android:text="@{@string/film_year_text(film.year)}"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintStart_toEndOf="@id/previewImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTx"
+            tools:text="Год: 2004" />
+
+        <TextView
+            android:id="@+id/rateTx"
+            style="@style/txFilmDetailed"
+            android:text="@{@string/film_rate_text(film.rate)}"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintStart_toEndOf="@id/previewImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/yearTx"
+            tools:text="Рейтинг: 6.083" />
+
+        <TextView
+            android:id="@+id/descTx"
+            style="@style/txFilmDetailed"
+            android:text="@{film.description}"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginStart="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/previewImage"
+            tools:text="Описание" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
