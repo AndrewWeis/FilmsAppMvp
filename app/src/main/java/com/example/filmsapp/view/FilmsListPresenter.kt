@@ -2,6 +2,7 @@ package com.example.filmsapp.view
 
 import com.example.filmsapp.model.network.ApiService
 import com.example.filmsapp.model.network.response.FilmResponse
+import com.example.filmsapp.view.adapters.FilmsListRVItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -9,6 +10,8 @@ import retrofit2.Response
 class FilmsListPresenter(
     private var view: FilmsListView?
 ) {
+
+    lateinit var films: List<FilmsListRVItem.Film>
 
     fun getFilms() {
         view?.showLoading()
@@ -21,9 +24,14 @@ class FilmsListPresenter(
 
             override fun onResponse(call: Call<FilmResponse>, response: Response<FilmResponse>) {
                 view?.stopLoading()
-                view?.showListFilms(response.body()?.films ?: listOf())
+                films = response.body()?.films ?: listOf()
+                view?.showListFilms(films, null)
             }
         })
+    }
+
+    fun getFilteredFilms(genre: String) {
+        view?.showListFilms(films, genre)
     }
 
     fun destroyView() {

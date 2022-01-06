@@ -45,7 +45,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
 
                 }
                 is FilmsListRVItem.Genre -> {
-
+                    presenter.getFilteredFilms(it.name)
                 }
                 is FilmsListRVItem.Title -> {
                    /* do nothing */
@@ -74,10 +74,10 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         }
     }
 
-    override fun showListFilms(list: List<FilmsListRVItem.Film>) {
+    override fun showListFilms(list: List<FilmsListRVItem.Film>, genre: String?) {
         val rvItems = mutableListOf<FilmsListRVItem>()
         val genres: SortedSet<String> = sortedSetOf()
-        val sortedFilmsList = list.sortedBy { it.localName }
+        var sortedFilmsList = list.sortedBy { it.localName }
 
         rvItems.add(FilmsListRVItem.Title("Жанры"))
 
@@ -90,6 +90,10 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         genres.forEach { rvItems.add(FilmsListRVItem.Genre(it)) }
 
         rvItems.add(FilmsListRVItem.Title("Фильмы"))
+
+        if (genre != null) {
+            sortedFilmsList = sortedFilmsList.filter { it.genres?.contains(genre) == true }
+        }
 
         rvItems.addAll(sortedFilmsList)
         sortedFilmsList.forEach { Log.i("Test", it.toString()) }
