@@ -20,10 +20,7 @@ import java.util.*
 class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView {
 
     private lateinit var presenter: FilmsListPresenter
-    private lateinit var films: List<FilmsListRVItem.Film>
-
     private lateinit var binding: FragmentFilmsListBinding
-
     private lateinit var filmsListAdapter: FilmsListAdapter
 
     override fun onCreateView(
