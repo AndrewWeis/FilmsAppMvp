@@ -21,17 +21,11 @@ sealed class FilmsListRVItem {
         @Json(name = "image_url") val imageUrl: String?,
         val description: String?,
         val genres: List<String>?,
-
-        /**
-         * Short description is used for displaying truncated descriptions in the UI
-         */
         val shortTitle: String? = localName?.smartTruncate(16)
-
     ) : FilmsListRVItem(), Parcelable
 
     data class Genre(
         val name: String,
         val isSelected: Boolean = false
     ) : FilmsListRVItem()
-
 }

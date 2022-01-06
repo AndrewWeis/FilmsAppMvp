@@ -17,6 +17,7 @@ import com.example.filmsapp.view.FilmsListPresenter
 import com.example.filmsapp.view.FilmsListView
 import com.example.filmsapp.view.adapters.FilmsListAdapter
 import com.example.filmsapp.view.adapters.FilmsListRVItem
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 

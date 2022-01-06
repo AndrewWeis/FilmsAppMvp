@@ -27,6 +27,9 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+/**
+ * Highlights the selected genre in color
+ */
 @BindingAdapter("selectGenre")
 fun selectGenre(btn: Button, isSelected: Boolean) {
     if (isSelected) {

@@ -24,10 +24,6 @@ class FilmsListAdapter(
             diffResult.dispatchUpdatesTo(this)
         }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsListViewHolder {
         return when(viewType) {
             R.layout.item_title -> FilmsListViewHolder.TitleViewHolder(
