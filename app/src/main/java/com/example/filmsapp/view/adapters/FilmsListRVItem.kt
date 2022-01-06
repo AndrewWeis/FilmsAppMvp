@@ -1,7 +1,9 @@
 package com.example.filmsapp.view.adapters
 
+import android.os.Parcelable
 import com.example.filmsapp.smartTruncate
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 sealed class FilmsListRVItem {
 
@@ -9,12 +11,13 @@ sealed class FilmsListRVItem {
         val title: String
     ) : FilmsListRVItem()
 
+    @Parcelize
     data class Film(
         val id: Long?,
         @Json(name = "localized_name") val localName: String?,
         val name: String?,
         val year: Int?,
-        val rate: Double?,
+        @Json(name = "rating") val rate: Float?,
         @Json(name = "image_url") val imageUrl: String?,
         val description: String?,
         val genres: List<String>?,
@@ -24,7 +27,7 @@ sealed class FilmsListRVItem {
          */
         val shortTitle: String? = localName?.smartTruncate(16)
 
-    ) : FilmsListRVItem()
+    ) : FilmsListRVItem(), Parcelable
 
     data class Genre(
         val name: String,

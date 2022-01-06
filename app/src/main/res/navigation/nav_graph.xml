@@ -8,11 +8,22 @@
     <fragment
         android:id="@+id/filmsListFragment"
         android:name="com.example.filmsapp.view.fragments.FilmsListFragment"
-        android:label="fragment_films_list"
-        tools:layout="@layout/fragment_films_list" />
+        android:label="Главная"
+        tools:layout="@layout/fragment_films_list">
+        <action
+            android:id="@+id/action_filmsListFragment_to_detailedFilmFragment"
+            app:destination="@id/detailedFilmFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailedFilmFragment"
         android:name="com.example.filmsapp.view.fragments.DetailedFilmFragment"
-        android:label="fragment_detailed_film"
-        tools:layout="@layout/fragment_detailed_film" />
+        android:label="{title}"
+        tools:layout="@layout/fragment_detailed_film">
+        <argument
+            android:name="film"
+            app:argType="com.example.filmsapp.view.adapters.FilmsListRVItem$Film" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

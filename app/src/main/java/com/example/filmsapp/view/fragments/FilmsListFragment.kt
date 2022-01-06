@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.ListFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.filmsapp.R
@@ -43,7 +45,8 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         filmsListAdapter = FilmsListAdapter(FilmsListAdapter.OnClickListener {
             when(it) {
                 is FilmsListRVItem.Film -> {
-
+                    val action = FilmsListFragmentDirections.actionFilmsListFragmentToDetailedFilmFragment(it, it.localName ?: "Title is lost :c")
+                    findNavController().navigate(action)
                 }
                 is FilmsListRVItem.Genre -> {
                     presenter.getFilteredFilms(it.name)
