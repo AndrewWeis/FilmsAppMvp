@@ -1,5 +1,7 @@
 ## Films app
 
+[apk file](/app-debug.apk)
+
 This app demonstrates the following views and techniques:
 
 * Retrofit - to make api calls to an HTTP web service
