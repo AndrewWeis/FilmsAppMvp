@@ -35,13 +35,23 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         presenter = FilmsListPresenter(this)
         presenter.getFilms()
 
-
-
         return binding.root
     }
 
     private fun setUpRecyclerView() {
-        filmsListAdapter = FilmsListAdapter()
+        filmsListAdapter = FilmsListAdapter(FilmsListAdapter.OnClickListener {
+            when(it) {
+                is FilmsListRVItem.Film -> {
+
+                }
+                is FilmsListRVItem.Genre -> {
+
+                }
+                is FilmsListRVItem.Title -> {
+                   /* do nothing */
+                }
+            }
+        })
 
         binding.filmsRV.apply {
             setHasFixedSize(true)

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="filmClick"
+            type="com.example.filmsapp.view.adapters.FilmsListAdapter.OnClickListener" />
         <variable
             name="film"
             type="com.example.filmsapp.view.adapters.FilmsListRVItem.Film" />
@@ -15,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_small"
+        android:onClick="@{() -> filmClick.onClick(film)}"
         android:backgroundTint="@color/background"
         android:elevation="0dp">
 

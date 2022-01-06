@@ -9,6 +9,8 @@ import com.example.filmsapp.databinding.ItemTitleBinding
 
 sealed class FilmsListViewHolder(binding: ViewBinding): RecyclerView.ViewHolder(binding.root) {
 
+    var onClickListener: FilmsListAdapter.OnClickListener? = null
+
     class TitleViewHolder(private val binding: ItemTitleBinding): FilmsListViewHolder(binding) {
         fun bind(title: FilmsListRVItem.Title) {
             binding.title = title
@@ -18,12 +20,14 @@ sealed class FilmsListViewHolder(binding: ViewBinding): RecyclerView.ViewHolder(
     class FilmViewHolder(private val binding: ItemFilmBinding): FilmsListViewHolder(binding) {
         fun bind(film: FilmsListRVItem.Film) {
             binding.film = film
+            binding.filmClick = onClickListener
         }
     }
 
     class GenreViewHolder(private val binding: ItemGenreBinding): FilmsListViewHolder(binding) {
         fun bind(genre: FilmsListRVItem.Genre) {
             binding.genre = genre
+            binding.genreClick = onClickListener
         }
     }
 }
