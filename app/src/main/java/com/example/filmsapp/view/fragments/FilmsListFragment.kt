@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
@@ -26,6 +26,8 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
     private lateinit var binding: FragmentFilmsListBinding
     private lateinit var filmsListAdapter: FilmsListAdapter
 
+    private val viewModel by viewModels<FilmsListViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,8 +37,14 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
 
         setUpRecyclerView()
 
-        presenter = FilmsListPresenter(this)
-        presenter.getFilms()
+        presenter = FilmsListPresenter(this, viewModel)
+        if (savedInstanceState == null) {
+            presenter.getFilms()
+        }
+
+        viewModel.filmsListRVItems.observe(viewLifecycleOwner) {
+            presenter.restoreItems(it)
+        }
 
         return binding.root
     }
@@ -77,6 +85,10 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         }
     }
 
+    override fun showRestoredItems(items: List<FilmsListRVItem>) {
+        filmsListAdapter.items = items
+    }
+
     override fun showListFilms(list: List<FilmsListRVItem.Film>, genre: String?) {
         val rvItems = mutableListOf<FilmsListRVItem>()
         val genres: SortedSet<String> = sortedSetOf()
@@ -105,7 +117,9 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         }
 
         rvItems.addAll(sortedFilmsList)
-        sortedFilmsList.forEach { Log.i("Test", it.toString()) }
+
+        viewModel.initFilmsListRVItems(rvItems.toList())
+
         filmsListAdapter.items = rvItems
     }
 
