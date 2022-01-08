@@ -1,4 +1,4 @@
-package com.example.filmsapp.view.fragments
+package com.example.filmsapp.ui.films_list
 
 import android.os.Bundle
 import android.util.Log
@@ -13,15 +13,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
-import com.example.filmsapp.view.FilmsListPresenter
-import com.example.filmsapp.view.FilmsListView
-import com.example.filmsapp.view.adapters.FilmsListAdapter
-import com.example.filmsapp.view.adapters.FilmsListRVItem
-import com.google.android.material.snackbar.Snackbar
+import com.example.filmsapp.adapters.FilmsListAdapter
+import com.example.filmsapp.model.FilmsListRVItem
 import java.util.*
 
 
-class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView {
+class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContract.View {
 
     private lateinit var presenter: FilmsListPresenter
     private lateinit var binding: FragmentFilmsListBinding
@@ -49,7 +46,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
             if (viewModel.filmsListRVItems.isNotEmpty()) {
                 presenter.restoreItems(viewModel.filmsListRVItems)
             } else {
-                presenter.getFilms()
+                presenter.requestDataFromServer()
             }
         } else {
             presenter.restoreItems(viewModel.filmsListRVItems)
@@ -99,42 +96,12 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
         filmsListAdapter.items = items
     }
 
-    override fun showListFilms(list: List<FilmsListRVItem.Film>, genre: String?) {
-        val rvItems = mutableListOf<FilmsListRVItem>()
-        val genres: SortedSet<String> = sortedSetOf()
-        var sortedFilmsList = list.sortedBy { it.localName }
-
-        rvItems.add(FilmsListRVItem.Title("Жанры"))
-
-        sortedFilmsList.forEach { film ->
-            film.genres?.forEach { genre ->
-                genres.add(genre)
-            }
-        }
-
-        genres.forEach {
-            if (it == genre) {
-                rvItems.add(FilmsListRVItem.Genre(it, true))
-            } else {
-                rvItems.add(FilmsListRVItem.Genre(it))
-            }
-        }
-
-        rvItems.add(FilmsListRVItem.Title("Фильмы"))
-
-        if (genre != null) {
-            sortedFilmsList = sortedFilmsList.filter { it.genres?.contains(genre) == true }
-        }
-
-        rvItems.addAll(sortedFilmsList)
-
-        viewModel.filmsListRVItems = rvItems.toList()
-
-        filmsListAdapter.items = rvItems
+    override fun setDataToRV(list: List<FilmsListRVItem>) {
+        filmsListAdapter.items = list
     }
 
-    override fun showError(e: String) {
-        Log.i("RetrofitCheck", "Failure: $e")
+    override fun onResponseFailure(t: Throwable) {
+        Log.i("RetrofitCheck", "Failure: ${t.message}")
         Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_SHORT).show()
     }
 
@@ -148,6 +115,6 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListView 
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.destroyView()
+        presenter.onDestroy()
     }
 }

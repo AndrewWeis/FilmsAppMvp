@@ -1,7 +1,7 @@
-package com.example.filmsapp.view.fragments
+package com.example.filmsapp.ui.films_list
 
 import androidx.lifecycle.ViewModel
-import com.example.filmsapp.view.adapters.FilmsListRVItem
+import com.example.filmsapp.model.FilmsListRVItem
 
 class FilmsListViewModel: ViewModel() {
 

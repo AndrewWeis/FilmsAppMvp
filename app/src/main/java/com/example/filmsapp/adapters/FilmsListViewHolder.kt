@@ -1,10 +1,11 @@
-package com.example.filmsapp.view.adapters
+package com.example.filmsapp.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.filmsapp.databinding.ItemFilmBinding
 import com.example.filmsapp.databinding.ItemGenreBinding
 import com.example.filmsapp.databinding.ItemTitleBinding
+import com.example.filmsapp.model.FilmsListRVItem
 
 
 sealed class FilmsListViewHolder(binding: ViewBinding): RecyclerView.ViewHolder(binding.root) {

@@ -1,15 +1,15 @@
-package com.example.filmsapp.view.adapters
+package com.example.filmsapp.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.ItemFilmBinding
 import com.example.filmsapp.databinding.ItemGenreBinding
 import com.example.filmsapp.databinding.ItemTitleBinding
+import com.example.filmsapp.model.FilmsListRVItem
 
 class FilmsListAdapter(
     private val onClickListener: OnClickListener?

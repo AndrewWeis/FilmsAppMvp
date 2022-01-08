@@ -7,11 +7,11 @@
 
         <variable
             name="genreClick"
-            type="com.example.filmsapp.view.adapters.FilmsListAdapter.OnClickListener" />
+            type="com.example.filmsapp.adapters.FilmsListAdapter.OnClickListener" />
 
         <variable
             name="genre"
-            type="com.example.filmsapp.view.adapters.FilmsListRVItem.Genre" />
+            type="com.example.filmsapp.model.FilmsListRVItem.Genre" />
     </data>
 
     <Button

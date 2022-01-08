@@ -7,7 +7,7 @@
 
         <variable
             name="film"
-            type="com.example.filmsapp.view.adapters.FilmsListRVItem.Film" />
+            type="com.example.filmsapp.model.FilmsListRVItem.Film" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:padding="@dimen/margin_normal"
-        tools:context=".view.fragments.DetailedFilmFragment">
+        tools:context=".ui.film_detailed.DetailedFilmFragment">
 
         <ImageView
             android:id="@+id/previewImage"

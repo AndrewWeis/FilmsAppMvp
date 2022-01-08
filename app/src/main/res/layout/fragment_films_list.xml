@@ -14,7 +14,7 @@
         android:paddingStart="@dimen/margin_normal"
         android:paddingEnd="@dimen/margin_small"
         android:paddingBottom="@dimen/margin_normal"
-        tools:context=".view.fragments.FilmsListFragment">
+        tools:context=".ui.films_list.FilmsListFragment">
 
 
         <ProgressBar

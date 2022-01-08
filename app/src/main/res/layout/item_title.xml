@@ -7,7 +7,7 @@
 
         <variable
             name="title"
-            type="com.example.filmsapp.view.adapters.FilmsListRVItem.Title" />
+            type="com.example.filmsapp.model.FilmsListRVItem.Title" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

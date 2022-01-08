@@ -6,10 +6,10 @@
     <data>
         <variable
             name="filmClick"
-            type="com.example.filmsapp.view.adapters.FilmsListAdapter.OnClickListener" />
+            type="com.example.filmsapp.adapters.FilmsListAdapter.OnClickListener" />
         <variable
             name="film"
-            type="com.example.filmsapp.view.adapters.FilmsListRVItem.Film" />
+            type="com.example.filmsapp.model.FilmsListRVItem.Film" />
     </data>
 
     <androidx.cardview.widget.CardView

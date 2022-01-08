@@ -1,4 +1,4 @@
-package com.example.filmsapp.view.adapters
+package com.example.filmsapp.model
 
 import android.os.Parcelable
 import com.example.filmsapp.smartTruncate
