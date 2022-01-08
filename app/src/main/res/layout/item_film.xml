@@ -33,7 +33,8 @@
                 app:bindImage="@{film.imageUrl}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/image_not_found" />
+                tools:src="@drawable/image_not_found"
+                android:contentDescription="@string/preview_image" />
 
             <View
                 android:id="@+id/blackView"

@@ -1,4 +1,4 @@
-package com.example.filmsapp
+package com.example.filmsapp.utils
 
 private val PUNCTUATION = listOf(", ", "; ", ": ", " ")
 

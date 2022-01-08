@@ -14,8 +14,7 @@ interface FilmsListContract {
     }
 
     interface View {
-        fun showRestoredItems(items: List<FilmsListRVItem>)
-        fun setDataToRV(list: List<FilmsListRVItem>)
+        fun setDataToRV(items: List<FilmsListRVItem>)
         fun onResponseFailure(t: Throwable)
         fun showLoading()
         fun stopLoading()
@@ -24,7 +23,7 @@ interface FilmsListContract {
     interface Presenter {
         fun onDestroy()
         fun requestDataFromServer()
-        fun getFilteredFilms(genre: String)
+        fun showFilteredFilms(genre: String)
         fun restoreItems(items: List<FilmsListRVItem>)
     }
 }

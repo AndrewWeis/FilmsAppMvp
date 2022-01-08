@@ -10,13 +10,13 @@ class FilmsListPresenter(
 
     private val model: FilmsListContract.Model = FilmsListModel()
 
-    override fun getFilteredFilms(genre: String) {
+    override fun showFilteredFilms(genre: String) {
         prepareDataForRV(viewModel.films, genre)
         view?.setDataToRV(viewModel.filmsListRVItems)
     }
 
     override fun restoreItems(items: List<FilmsListRVItem>) {
-        view?.showRestoredItems(items)
+        view?.setDataToRV(items)
     }
 
     override fun onFinished(films: List<FilmsListRVItem.Film>) {

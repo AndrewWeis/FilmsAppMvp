@@ -1,7 +1,7 @@
 package com.example.filmsapp.model
 
 import android.os.Parcelable
-import com.example.filmsapp.smartTruncate
+import com.example.filmsapp.utils.smartTruncate
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 

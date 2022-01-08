@@ -18,7 +18,7 @@ class DetailedFilmFragment : Fragment(R.layout.fragment_detailed_film) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailedFilmBinding.inflate(inflater)
 
         binding.film = args.film

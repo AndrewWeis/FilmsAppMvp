@@ -15,7 +15,6 @@ import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFilmsListBinding
 import com.example.filmsapp.adapters.FilmsListAdapter
 import com.example.filmsapp.model.FilmsListRVItem
-import java.util.*
 
 
 class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContract.View {
@@ -30,7 +29,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContr
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFilmsListBinding.inflate(inflater)
 
         setUpRecyclerView()
@@ -38,17 +37,17 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContr
         presenter = FilmsListPresenter(this, viewModel)
 
         /**
-         * Case 1. When a fragment is created for the first time, we load data from a remote service
-         * Case 2. When a fragment was overlapped by another fragment
+         * Case 1. When a fragment was overlapped by another fragment
+         * Case 2. When a fragment is created for the first time, we load data from a remote service
          * Case 3. When a fragment is completely recreated, for example, when changing orientation
          */
         if (savedInstanceState == null) {
-            if (viewModel.filmsListRVItems.isNotEmpty()) {
+            if (viewModel.filmsListRVItems.isNotEmpty()) { // case 1
                 presenter.restoreItems(viewModel.filmsListRVItems)
-            } else {
+            } else { // case 2
                 presenter.requestDataFromServer()
             }
-        } else {
+        } else { // case 3
             presenter.restoreItems(viewModel.filmsListRVItems)
         }
 
@@ -64,7 +63,7 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContr
                     findNavController().navigate(action)
                 }
                 is FilmsListRVItem.Genre -> {
-                    presenter.getFilteredFilms(it.name)
+                    presenter.showFilteredFilms(it.name)
                 }
                 is FilmsListRVItem.Title -> {
                    /* do nothing */
@@ -92,16 +91,12 @@ class FilmsListFragment : Fragment(R.layout.fragment_films_list), FilmsListContr
         }
     }
 
-    override fun showRestoredItems(items: List<FilmsListRVItem>) {
+    override fun setDataToRV(items: List<FilmsListRVItem>) {
         filmsListAdapter.items = items
     }
 
-    override fun setDataToRV(list: List<FilmsListRVItem>) {
-        filmsListAdapter.items = list
-    }
-
     override fun onResponseFailure(t: Throwable) {
-        Log.i("RetrofitCheck", "Failure: ${t.message}")
+        Log.i("ResponseCheck", "Failure: ${t.message}")
         Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_SHORT).show()
     }
 

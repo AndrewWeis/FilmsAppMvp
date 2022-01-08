@@ -9,6 +9,10 @@ import retrofit2.Response
 
 class FilmsListModel: FilmsListContract.Model {
 
+    /**
+     * This function will fetch films data
+     * @param onFinishedListener
+     */
     override fun getFilmsList(onFinishedListener: FilmsListContract.Model.OnFinishedListener) {
         ApiService.retrofitService.getFilms().enqueue( object: Callback<FilmResponse> {
             override fun onFailure(call: Call<FilmResponse>, t: Throwable) {
