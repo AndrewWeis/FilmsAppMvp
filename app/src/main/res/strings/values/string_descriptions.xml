@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description_film_year">Год: %d</string>
+    <string name="description_film_rate">Рейтинг: %.2f</string>
+    <string name="description_image_not_found">Изображение не найдено</string>
+    <string name="description_preview_image">Изображение фильма</string>
+</resources>

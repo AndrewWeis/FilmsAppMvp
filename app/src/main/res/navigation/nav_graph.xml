@@ -3,25 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/filmsListFragment">
+    app:startDestination="@id/filmsFragment">
 
     <fragment
-        android:id="@+id/filmsListFragment"
-        android:name="com.example.filmsapp.ui.films_list.FilmsListFragment"
-        android:label="Главная"
-        tools:layout="@layout/fragment_films_list">
+        android:id="@+id/filmsFragment"
+        android:name="com.example.filmsapp.ui.fragments.FilmsFragment"
+        tools:layout="@layout/fragment_films">
         <action
             android:id="@+id/action_filmsListFragment_to_detailedFilmFragment"
             app:destination="@id/detailedFilmFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedFilmFragment"
-        android:name="com.example.filmsapp.ui.film_detailed.DetailedFilmFragment"
+        android:name="com.example.filmsapp.ui.fragments.DetailedFilmFragment"
         android:label="{title}"
         tools:layout="@layout/fragment_detailed_film">
         <argument
             android:name="film"
-            app:argType="com.example.filmsapp.model.FilmsListRVItem$Film" />
+            app:argType="com.example.filmsapp.ui.list.models.FilmsListRVItem$Film" />
         <argument
             android:name="title"
             app:argType="string" />

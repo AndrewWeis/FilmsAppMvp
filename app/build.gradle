@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.filmsapp"
-        minSdk 22
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            versionNameSuffix '-debug'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -33,7 +37,23 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        dataBinding true
+        viewBinding true
+    }
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts/items',
+                    'src/main/res/layouts/fragments',
+                    'src/main/res/layouts/appbars',
+                    'src/main/res/layouts/appbars/toolbars',
+                    'src/main/res/layouts/activities',
+                    'src/main/res/layouts/views',
+                    'src/main/res/layouts',
+                    'src/main/res/styles',
+                    'src/main/res/strings',
+                    'src/main/res'
+            ]
+        }
     }
 }
 
@@ -57,6 +77,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
     // Moshi
     implementation "com.squareup.moshi:moshi:1.9.3"
@@ -70,4 +91,19 @@ dependencies {
 
     // Logging
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    // Koin
+    def koin_version = "3.1.2"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // Testing
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+
+    // MoxiX
+    implementation 'tech.schoolhelper:moxy-x:1.7.0'
+    kapt 'tech.schoolhelper:moxy-x-compiler:1.7.0'
+    implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
+
+    // AppBarProvider
+    implementation 'com.github.sequenia:App-Bar-Provider:1.1.1'
 }

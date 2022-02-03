@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">FilmsApp</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="film_year_text">Год: %d</string>
-    <string name="film_rate_text">Рейтинг: %.2f</string>
-    <string name="image_not_found">Изображение не найдено</string>
-    <string name="preview_image">Изображение фильма</string>
-</resources>
