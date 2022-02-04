@@ -87,7 +87,7 @@ class FilmsFragment :
         when (item) {
             is FilmsListRVItem.Film -> {
                 val action = FilmsFragmentDirections
-                    .actionFilmsListFragmentToDetailedFilmFragment(
+                    .actionFilmsListToDetailedFilm(
                         item,
                         item.name ?: ""
                     )

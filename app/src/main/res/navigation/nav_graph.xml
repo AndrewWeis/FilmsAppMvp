@@ -10,7 +10,7 @@
         android:name="com.example.filmsapp.ui.fragments.FilmsFragment"
         tools:layout="@layout/films_fragment">
         <action
-            android:id="@+id/action_filmsListFragment_to_detailedFilmFragment"
+            android:id="@+id/action_filmsList_to_detailedFilm"
             app:destination="@id/detailedFilmFragment" />
     </fragment>
     <fragment
