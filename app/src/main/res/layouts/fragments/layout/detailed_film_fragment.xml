@@ -39,12 +39,12 @@
                 android:id="@+id/preview_image"
                 android:layout_width="132dp"
                 android:layout_height="201dp"
-                android:contentDescription="@string/description_image_not_found"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/img_not_found" />
+                tools:src="@drawable/img_not_found"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/title_text"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8dp"
                 android:layout_marginBottom="2dp"
-                android:text="@string/films_search"
+                android:text="@string/kino_poisk"
                 android:textColor="@color/purple_6936D6"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/rate_text"

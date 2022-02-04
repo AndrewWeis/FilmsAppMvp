@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
@@ -90,7 +89,7 @@ class FilmsFragment :
                 val action = FilmsFragmentDirections
                     .actionFilmsListFragmentToDetailedFilmFragment(
                         item,
-                        item.name ?: getString(R.string.title_default)
+                        item.name ?: ""
                     )
                 findNavController().navigate(action)
             }

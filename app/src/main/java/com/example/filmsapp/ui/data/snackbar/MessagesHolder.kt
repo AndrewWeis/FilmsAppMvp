@@ -3,6 +3,8 @@ package com.example.filmsapp.ui.data.snackbar
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import com.example.filmsapp.R
+import com.example.filmsapp.ui.utils.ResourcesUtils.getString
 
 /**
  * Держатель сообщений разных типов
@@ -25,7 +27,7 @@ class MessagesHolder(
     fun showUnhiddenNetworkError(message: String, listener: () -> Unit) {
         snackBarHolder.showIndefiniteDurationMessage(
             message,
-            "Повторить",
+            getString(R.string.button_repeat),
             object : SnackBarActionListener {
                 override fun onActionClick() {
                     listener()
@@ -35,10 +37,10 @@ class MessagesHolder(
     }
 
     fun showMessage(message: String) {
-        snackBarHolder.showLongDurationMessage(message, "OK")
+        snackBarHolder.showLongDurationMessage(message, getString(R.string.button_ok))
     }
 
     fun showInfoMessage(message: String) {
-        infoSnackBarHolder.showShortDurationMessage(message, "OK")
+        infoSnackBarHolder.showShortDurationMessage(message, getString(R.string.button_ok))
     }
 }

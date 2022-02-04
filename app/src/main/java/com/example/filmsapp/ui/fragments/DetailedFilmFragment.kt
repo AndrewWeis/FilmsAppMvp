@@ -61,7 +61,7 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
     private fun formYearGenreText(film: FilmsListRVItem.Film): String {
         var str = ""
         film.genres?.forEach { str += "${it.firstCharToLowerCase()}, " }
-        str += film.year.toString() + " год"
+        str += film.year.toString() + " " + getString(R.string.year)
         return str
     }
 
