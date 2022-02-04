@@ -21,7 +21,9 @@ import com.example.filmsapp.ui.utils.loadFilmPreview
  */
 class DetailedFilmFragment : Fragment(R.layout.fragment_detailed_film) {
 
-    private lateinit var binding: FragmentDetailedFilmBinding
+    private var _binding: FragmentDetailedFilmBinding? = null
+    private val binding get() = _binding!!
+
     private val args by navArgs<DetailedFilmFragmentArgs>()
 
     override fun onCreateView(
@@ -30,12 +32,19 @@ class DetailedFilmFragment : Fragment(R.layout.fragment_detailed_film) {
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        binding = FragmentDetailedFilmBinding.inflate(inflater)
+
+        _binding = FragmentDetailedFilmBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         setDataToViews(args.film)
         setUpToolBar()
 
-        return binding.root
+        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setDataToViews(film: FilmsListRVItem.Film) {

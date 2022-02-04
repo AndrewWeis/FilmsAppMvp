@@ -31,7 +31,9 @@ class FilmsFragment :
     FilmsView,
     FilmsListViewHolder.FilmViewHolderListener {
 
-    private lateinit var binding: FragmentFilmsBinding
+    private var _binding: FragmentFilmsBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var filmsListAdapter: FilmsListAdapter
     private lateinit var messagesHolder: MessagesHolder
 
@@ -49,13 +51,21 @@ class FilmsFragment :
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        binding = FragmentFilmsBinding.inflate(inflater, container, false)
+
+        _binding = FragmentFilmsBinding.inflate(inflater, container, false)
+        val view = binding.root
+
         messagesHolder = MessagesHolder(viewLifecycleOwner, layoutInflater, binding.root)
 
         setUpRecyclerView()
         setUpToolBar()
 
-        return binding.root
+        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun showData(items: List<FilmsListRVItem>) {
