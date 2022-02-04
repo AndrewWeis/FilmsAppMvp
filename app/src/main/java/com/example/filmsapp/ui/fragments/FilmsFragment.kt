@@ -54,7 +54,7 @@ class FilmsFragment :
         _binding = FilmsFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        messagesHolder = MessagesHolder(viewLifecycleOwner, layoutInflater, binding.root)
+        messagesHolder = MessagesHolder(viewLifecycleOwner, binding.root)
 
         setUpRecyclerView()
         setUpToolBar()

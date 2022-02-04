@@ -1,6 +1,5 @@
 package com.example.filmsapp.ui.data.snackbar
 
-import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmsapp.R
@@ -11,12 +10,10 @@ import com.example.filmsapp.ui.utils.ResourcesUtils.getString
  */
 class MessagesHolder(
     lifecycleOwner: LifecycleOwner,
-    layoutInflater: LayoutInflater,
     view: View
 ) {
     private var snackBarHolder =
         DefaultSnackBarHolder(lifecycleOwner, view)
-    //        CustomViewSnackBarHolder(lifecycleOwner, view, layoutInflater, R.layout.snackbar_view)
 
     private var infoSnackBarHolder = DefaultSnackBarHolder(lifecycleOwner, view)
 
