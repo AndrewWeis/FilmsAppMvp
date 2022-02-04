@@ -24,7 +24,8 @@ class FilmsPresenter(
     private var filmsListRVItems: List<FilmsListRVItem> = listOf()
     private var films: List<FilmsListRVItem.Film> = listOf()
 
-    init {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
         requestDataFromServer()
     }
 
