@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.filmsapp.R
-import com.example.filmsapp.databinding.FragmentDetailedFilmBinding
+import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
 import com.example.filmsapp.ui.list.models.FilmsListRVItem
 import com.example.filmsapp.ui.utils.firstCharToLowerCase
 import com.example.filmsapp.ui.utils.loadFilmPreview
@@ -19,9 +19,9 @@ import com.example.filmsapp.ui.utils.loadFilmPreview
 /**
  * View с подробным описанием фильма
  */
-class DetailedFilmFragment : Fragment(R.layout.fragment_detailed_film) {
+class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
 
-    private var _binding: FragmentDetailedFilmBinding? = null
+    private var _binding: DetailedFilmFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val args by navArgs<DetailedFilmFragmentArgs>()
@@ -33,7 +33,7 @@ class DetailedFilmFragment : Fragment(R.layout.fragment_detailed_film) {
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
 
-        _binding = FragmentDetailedFilmBinding.inflate(inflater, container, false)
+        _binding = DetailedFilmFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
         setDataToViews(args.film)

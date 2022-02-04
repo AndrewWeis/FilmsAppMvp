@@ -13,7 +13,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.filmsapp.R
-import com.example.filmsapp.databinding.FragmentFilmsBinding
+import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
@@ -31,7 +31,7 @@ class FilmsFragment :
     FilmsView,
     FilmsListViewHolder.FilmViewHolderListener {
 
-    private var _binding: FragmentFilmsBinding? = null
+    private var _binding: FilmsFragmentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var filmsListAdapter: FilmsListAdapter
@@ -52,7 +52,7 @@ class FilmsFragment :
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
-        _binding = FragmentFilmsBinding.inflate(inflater, container, false)
+        _binding = FilmsFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
         messagesHolder = MessagesHolder(viewLifecycleOwner, layoutInflater, binding.root)

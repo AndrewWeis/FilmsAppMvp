@@ -3,9 +3,7 @@ package com.example.filmsapp.ui.list.view_holders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.filmsapp.R
-import com.example.filmsapp.databinding.ItemFilmBinding
-import com.example.filmsapp.databinding.ItemGenreBinding
-import com.example.filmsapp.databinding.ItemTitleBinding
+import com.example.filmsapp.databinding.*
 import com.example.filmsapp.ui.list.models.FilmsListRVItem
 import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
 import com.example.filmsapp.ui.utils.loadFilmPreview
@@ -20,7 +18,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder
     /**
      * ViewHolder для заголовков
      */
-    class TitleViewHolder(private val binding: ItemTitleBinding) : FilmsListViewHolder(binding) {
+    class TitleViewHolder(private val binding: TitleItemBinding) : FilmsListViewHolder(binding) {
         fun bind(title: FilmsListRVItem.Title) {
             binding.titleText.text = title.title
 
@@ -33,7 +31,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder
     /**
      * ViewHolder для фильмов
      */
-    class FilmViewHolder(private val binding: ItemFilmBinding) : FilmsListViewHolder(binding) {
+    class FilmViewHolder(private val binding: FilmItemBinding) : FilmsListViewHolder(binding) {
         fun bind(film: FilmsListRVItem.Film) {
             binding.filmTitleText.text = film.shortTitle
 
@@ -48,7 +46,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder
     /**
      * ViewHolder для жанров
      */
-    class GenreViewHolder(private val binding: ItemGenreBinding) : FilmsListViewHolder(binding) {
+    class GenreViewHolder(private val binding: GenreItemBinding) : FilmsListViewHolder(binding) {
         fun bind(genre: FilmsListRVItem.Genre) {
             binding.genreText.text = genre.name
 

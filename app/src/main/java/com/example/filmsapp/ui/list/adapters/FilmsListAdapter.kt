@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmsapp.R
-import com.example.filmsapp.databinding.ItemFilmBinding
-import com.example.filmsapp.databinding.ItemGenreBinding
-import com.example.filmsapp.databinding.ItemTitleBinding
+import com.example.filmsapp.databinding.*
 import com.example.filmsapp.ui.list.diff_utils.ItemDiffCallback
 import com.example.filmsapp.ui.list.models.FilmsListRVItem
 import com.example.filmsapp.ui.list.view_holders.FilmsListViewHolder
@@ -30,14 +28,14 @@ class FilmsListAdapter(private val listener: FilmsListViewHolder.FilmViewHolderL
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsListViewHolder {
         return when (viewType) {
-            R.layout.item_title -> FilmsListViewHolder.TitleViewHolder(
-                ItemTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            R.layout.title_item -> FilmsListViewHolder.TitleViewHolder(
+                TitleItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            R.layout.item_film -> FilmsListViewHolder.FilmViewHolder(
-                ItemFilmBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            R.layout.film_item -> FilmsListViewHolder.FilmViewHolder(
+                FilmItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            R.layout.item_genre -> FilmsListViewHolder.GenreViewHolder(
-                ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            R.layout.genre_item -> FilmsListViewHolder.GenreViewHolder(
+                GenreItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             else -> throw IllegalArgumentException("Invalid ViewType Provided")
         }
@@ -60,9 +58,9 @@ class FilmsListAdapter(private val listener: FilmsListViewHolder.FilmViewHolderL
 
     override fun getItemViewType(position: Int): Int {
         return when (items[position]) {
-            is FilmsListRVItem.Film -> R.layout.item_film
-            is FilmsListRVItem.Genre -> R.layout.item_genre
-            is FilmsListRVItem.Title -> R.layout.item_title
+            is FilmsListRVItem.Film -> R.layout.film_item
+            is FilmsListRVItem.Genre -> R.layout.genre_item
+            is FilmsListRVItem.Title -> R.layout.title_item
         }
     }
 }
