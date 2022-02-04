@@ -13,7 +13,7 @@ import com.example.filmsapp.ui.utils.ResourcesUtils
 import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
 
 /**
- * ViewHolder для элементов списка
+ * ViewHolder
  */
 sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
 

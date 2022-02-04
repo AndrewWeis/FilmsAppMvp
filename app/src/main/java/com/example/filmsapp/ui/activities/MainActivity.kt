@@ -6,7 +6,7 @@ import com.example.filmsapp.R
 import com.example.filmsapp.ui.activities.base.BaseActivity
 
 /**
- * Главное activity. Используется паттерн single activity
+ * Главное activity
  */
 class MainActivity : BaseActivity() {
 

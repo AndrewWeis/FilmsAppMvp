@@ -23,7 +23,7 @@ import com.example.filmsapp.ui.list.view_holders.FilmsListViewHolder
 import org.koin.android.ext.android.get
 
 /**
- * View для отображения списка фильмов
+ * Fragment для отображения списка фильмов
  */
 class FilmsFragment :
     MvpAppCompatFragment(),

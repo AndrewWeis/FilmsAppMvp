@@ -19,7 +19,7 @@ import com.example.filmsapp.ui.utils.ResourcesUtils
 import com.example.filmsapp.ui.utils.firstCharToLowerCase
 
 /**
- * View с подробным описанием фильма
+ * Fragment с подробным описанием фильма
  */
 class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
 

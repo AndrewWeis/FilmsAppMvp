@@ -9,6 +9,9 @@ import retrofit2.http.GET
  */
 interface ApiFilms {
 
+    /**
+     * Запрос на получение списка фильмов
+     */
     @GET("films.json")
     fun getFilms(): Call<FilmResponse>
 }
