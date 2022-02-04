@@ -3,7 +3,6 @@ package com.example.filmsapp.ui.list.view_holders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.filmsapp.R
-import com.example.filmsapp.data.constants.FILM_CORNERS_RADIUS
 import com.example.filmsapp.databinding.FilmItemBinding
 import com.example.filmsapp.databinding.GenreItemBinding
 import com.example.filmsapp.databinding.TitleItemBinding
@@ -48,7 +47,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder
                 .error(R.drawable.img_not_found)
                 .placeholder(R.drawable.img_not_found)
                 .centerCrop()
-                .roundedCorners(ResourcesUtils.getPxByDp(FILM_CORNERS_RADIUS))
+                .roundedCorners(ResourcesUtils.getPxByDp(4f))
                 .into(binding.previewImage)
         }
     }

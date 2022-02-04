@@ -11,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.filmsapp.R
-import com.example.filmsapp.data.constants.FILM_CORNERS_RADIUS
 import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
 import com.example.filmsapp.ui.data.image_loader.ImageLoader
 import com.example.filmsapp.ui.list.models.FilmsListRVItem
@@ -60,7 +59,7 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
             .error(R.drawable.img_not_found)
             .placeholder(R.drawable.img_not_found)
             .centerCrop()
-            .roundedCorners(ResourcesUtils.getPxByDp(FILM_CORNERS_RADIUS))
+            .roundedCorners(ResourcesUtils.getPxByDp(4f))
             .into(binding.previewImage)
     }
 
