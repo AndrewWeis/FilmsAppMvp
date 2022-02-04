@@ -33,7 +33,7 @@ sealed class FilmsListViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder
      */
     class FilmViewHolder(private val binding: FilmItemBinding) : FilmsListViewHolder(binding) {
         fun bind(film: FilmsListRVItem.Film) {
-            binding.filmTitleText.text = film.shortTitle
+            binding.filmTitleText.text = film.localName
 
             binding.filmLayout.setOnClickListener {
                 listener.onFilmClick(film)

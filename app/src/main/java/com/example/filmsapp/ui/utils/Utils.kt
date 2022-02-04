@@ -6,40 +6,6 @@ import com.example.filmsapp.data.constants.FILM_CORNERS_RADIUS
 import com.example.filmsapp.ui.data.image_loader.ImageLoader
 import com.example.filmsapp.ui.utils.ResourcesUtils.getPxByDp
 
-private val PUNCTUATION = listOf(", ", "; ", ": ", " ")
-
-/**
- * Форматирует текст длины length, учитывая свисающие знаки пунктуации
- *
- * @param length - кол-во символов
- */
-fun String.smartTruncate(length: Int): String {
-    val words = split(" ")
-    var added = 0
-    var hasMore = false
-    val builder = StringBuilder()
-    for (word in words) {
-        if (builder.length > length) {
-            hasMore = true
-            break
-        }
-        builder.append(word)
-        builder.append(" ")
-        added += 1
-    }
-
-    PUNCTUATION.map {
-        if (builder.endsWith(it)) {
-            builder.replace(builder.length - it.length, builder.length, "")
-        }
-    }
-
-    if (hasMore) {
-        builder.append("...")
-    }
-    return builder.toString()
-}
-
 /**
  * Переводит первую букву строки в заглавную
  */

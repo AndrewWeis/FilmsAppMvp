@@ -1,8 +1,6 @@
 package com.example.filmsapp.ui.list.models
 
 import android.os.Parcelable
-import com.example.filmsapp.data.constants.SHORT_TITLE_LENGTH
-import com.example.filmsapp.ui.utils.smartTruncate
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -30,7 +28,6 @@ sealed class FilmsListRVItem {
         val imageUrl: String?,
         val description: String?,
         val genres: List<String>?,
-        val shortTitle: String? = localName?.smartTruncate(SHORT_TITLE_LENGTH)
     ) : FilmsListRVItem(), Parcelable
 
     /**
