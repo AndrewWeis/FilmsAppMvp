@@ -101,12 +101,12 @@ class FilmsFragment :
     }
 
     override fun onFilmClick(film: Film) {
-        /*val action = FilmsFragmentDirections
+        val action = FilmsFragmentDirections
             .actionFilmsListToDetailedFilm(
                 film,
                 film.name ?: ""
             )
-        findNavController().navigate(action)*/
+        findNavController().navigate(action)
     }
 
     override fun onGenreClick(genreData: GenreData) {
@@ -134,7 +134,7 @@ class FilmsFragment :
             }
         }
 
-        listExtension = ListExtension(binding.filmsRV)
+        listExtension = ListExtension(binding.filmsRecyclerView)
         listExtension?.setLayoutManager(layoutManager)
         listExtension?.setAdapter(adapter)
     }

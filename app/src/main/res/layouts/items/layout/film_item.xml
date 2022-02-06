@@ -17,11 +17,10 @@
 
     <TextView
         android:id="@+id/film_title_text"
-        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Roboto.Black.Size16.MW"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
+        android:letterSpacing="0.01"
         android:maxLines="2"
         android:textStyle="bold"
         tools:text="Ассистент звезды" />

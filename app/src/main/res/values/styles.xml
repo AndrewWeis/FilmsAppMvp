@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Roboto.Black.Size26.CW" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="Roboto.Gray.Size16.CW" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_4B4B4B</item>
+    </style>
+
+    <style name="Roboto.Purple.Size24.WW" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/purple_6936D6</item>
+    </style>
+
+    <style name="Roboto.Purple.Size16.WW" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/purple_6936D6</item>
+    </style>
+
+    <style name="Roboto.Black.Size14.CW" parent="@style/TextAppearance.MaterialComponents.Body2">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="Roboto.Black.Size20.MW" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="Roboto.Black.Size16.MW" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+</resources>

@@ -7,9 +7,8 @@
 
     <TextView
         android:id="@+id/genre_text"
-        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Roboto.Black.Size16.MW"
+        android:letterSpacing="0.01"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
