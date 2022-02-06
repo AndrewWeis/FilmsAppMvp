@@ -2,6 +2,8 @@ package com.example.filmsapp.ui.data.snackbar
 
 import android.text.TextUtils
 import android.view.View
+import android.widget.Button
+import androidx.core.view.allViews
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -115,7 +117,23 @@ abstract class SnackBarHolder(
         currentSnackBar = createSnackBar(
             view, message, actionText, duration, actionListener, getSnackBarCallback()
         )
+
+        setSnackBarButtonLetterSpacing(0.00f)
+
         currentSnackBar!!.show()
+    }
+
+    /**
+     * Выставляет значение letterSpacing у кнопки SnackBar
+     *
+     * @param letterSpacing отступ между буквами
+     */
+    private fun setSnackBarButtonLetterSpacing(letterSpacing: Float) {
+        val snackbarLayout: Snackbar.SnackbarLayout =
+            currentSnackBar?.view as Snackbar.SnackbarLayout
+
+        val view = snackbarLayout.allViews.find { it is Button }
+        (view as Button).letterSpacing = letterSpacing
     }
 
     private fun getSnackBarCallback(): Snackbar.Callback {
