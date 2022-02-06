@@ -14,7 +14,7 @@ import com.example.filmsapp.ui.list.entities.GenreData
 @InjectViewState
 class FilmsPresenter(
     private val filmModel: FilmModel
-) : BasePresenter<FilmsView>(), FilmModel.GetFilmsCallback {
+) : BasePresenter<FilmsView>() {
 
     private var films: List<Film> = listOf()
     private var selectedGenre: GenreData? = null
@@ -22,17 +22,6 @@ class FilmsPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         requestDataFromServer()
-    }
-
-    override fun onSuccess(data: FilmResponse?) {
-        films = data?.films ?: listOf()
-        viewState.endContentLoading()
-        viewState.showData(films, selectedGenre)
-    }
-
-    override fun onError(error: String) {
-        viewState.endContentLoading()
-        viewState.showContentLoadingError(error)
     }
 
     fun onGenreClicked(genre: GenreData) {
@@ -46,6 +35,20 @@ class FilmsPresenter(
 
     private fun requestDataFromServer() {
         viewState.startContentLoading()
-        filmModel.getFilms(this)
+
+        filmModel.getFilms(object : FilmModel.GetFilmsCallback {
+
+            override fun onSuccess(data: FilmResponse?) {
+                films = data?.films ?: listOf()
+
+                viewState.endContentLoading()
+                viewState.showData(films, selectedGenre)
+            }
+
+            override fun onError(error: String) {
+                viewState.endContentLoading()
+                viewState.showContentLoadingError(error)
+            }
+        })
     }
 }
