@@ -33,14 +33,14 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-
         _binding = DetailedFilmFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setDataToViews(args.film)
         setUpToolBar()
-
-        return view
     }
 
     override fun onDestroyView() {

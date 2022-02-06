@@ -60,16 +60,16 @@ class FilmsFragment :
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-
         _binding = FilmsFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
 
-        messagesHolder = MessagesHolder(viewLifecycleOwner, binding.root)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        messagesHolder = MessagesHolder(viewLifecycleOwner, view)
 
         setUpToolBar()
         setUpAdapter()
-
-        return view
     }
 
     override fun onDestroyView() {
