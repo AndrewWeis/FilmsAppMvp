@@ -1,6 +1,6 @@
 package com.example.filmsapp.data.network.api
 
-import com.example.filmsapp.data.network.models.FilmResponse
+import com.example.filmsapp.data.network.entities.FilmResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

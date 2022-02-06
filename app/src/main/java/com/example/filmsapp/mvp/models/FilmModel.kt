@@ -1,6 +1,6 @@
 package com.example.filmsapp.mvp.models
 
-import com.example.filmsapp.data.network.models.FilmResponse
+import com.example.filmsapp.data.network.entities.FilmResponse
 import com.example.filmsapp.mvp.models.base.BaseCallback
 
 /**

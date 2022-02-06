@@ -1,4 +1,4 @@
-package com.example.filmsapp.data.network.models
+package com.example.filmsapp.data.network.entities
 
 import com.example.filmsapp.ui.list.entities.Film
 

@@ -2,7 +2,7 @@ package com.example.filmsapp.mvp.models
 
 import com.example.filmsapp.data.network.NetworkCallback
 import com.example.filmsapp.data.network.api.ApiFilms
-import com.example.filmsapp.data.network.models.FilmResponse
+import com.example.filmsapp.data.network.entities.FilmResponse
 
 /**
  * Реализация модели по получению фильмов с сервера
