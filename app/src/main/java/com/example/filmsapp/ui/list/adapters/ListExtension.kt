@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.list
+package com.example.filmsapp.ui.list.adapters
 
 import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager

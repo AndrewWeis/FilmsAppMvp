@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
 import com.example.filmsapp.ui.data.image_loader.ImageLoader
-import com.example.filmsapp.ui.list.models.FilmsListRVItem
+import com.example.filmsapp.ui.list.entities.Film
 import com.example.filmsapp.ui.utils.ResourcesUtils
 import com.example.filmsapp.ui.utils.firstCharToLowerCase
 
@@ -48,10 +48,10 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
         _binding = null
     }
 
-    private fun setDataToViews(film: FilmsListRVItem.Film) {
-        binding.titleText.text = film.localName
+    private fun setDataToViews(film: Film) {
+        binding.titleText.text = film.localizedName
         binding.yearGenreText.text = formYearGenreText(film)
-        binding.rateText.text = film.rate
+        binding.rateText.text = film.rating.toString()
         binding.descriptionText.text = film.description
 
         ImageLoader
@@ -66,7 +66,7 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
     /**
      * Формирует текст в виде "драма, приключения, 2017 год"
      */
-    private fun formYearGenreText(film: FilmsListRVItem.Film): String {
+    private fun formYearGenreText(film: Film): String {
         var str = ""
         film.genres?.forEach { str += "${it.firstCharToLowerCase()}, " }
         str += film.year.toString() + " " + getString(R.string.year)

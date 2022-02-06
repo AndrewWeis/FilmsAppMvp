@@ -13,17 +13,18 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.filmsapp.databinding.FilmsFragmentBinding
-import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.snackbar.MessagesHolder
-import com.example.filmsapp.ui.list.*
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILMS_HEADER
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRE
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRES_HEADER
-import com.example.filmsapp.ui.list.models.FilmsListRVItem
+import com.example.filmsapp.ui.list.adapters.ListExtension
+import com.example.filmsapp.ui.list.entities.Film
+import com.example.filmsapp.ui.list.entities.GenreData
+import com.example.filmsapp.ui.list.generators.FilmsGenerator
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
 import org.koin.android.ext.android.get
@@ -41,16 +42,16 @@ class FilmsFragment :
     private val binding get() = _binding!!
 
     private var listExtension: ListExtension? = null
+    private val generator: FilmsGenerator = FilmsGenerator()
     private lateinit var adapter: FilmsAdapter
     private lateinit var messagesHolder: MessagesHolder
-    private val generator: FilmsGenerator = FilmsGenerator()
 
     @InjectPresenter
     lateinit var presenter: FilmsPresenter
 
     @ProvidePresenter
     fun provideFilmsPresenter(): FilmsPresenter {
-        return FilmsPresenter(filmModel = get<FilmModel>())
+        return FilmsPresenter(filmModel = get())
     }
 
     override fun onCreateView(
@@ -68,16 +69,6 @@ class FilmsFragment :
         setUpToolBar()
         setUpAdapter()
 
-        // todo убрать
-        generator.generateListItems()
-
-        adapter.addListItems(
-            generator.genresHeader,
-            generator.genres,
-            generator.filmsHeader,
-            generator.films
-        )
-
         return view
     }
 
@@ -86,14 +77,14 @@ class FilmsFragment :
         _binding = null
     }
 
-    override fun showData(items: List<FilmsListRVItem>) {
-        generator.generateListItems()
+    override fun showData(items: List<Film>, selectedGenre: GenreData?) {
+        generator.generateList(items, selectedGenre)
 
         adapter.addListItems(
             generator.genresHeader,
-            generator.genres,
+            generator.genresList,
             generator.filmsHeader,
-            generator.films
+            generator.filmsList
         )
     }
 
@@ -118,8 +109,8 @@ class FilmsFragment :
         findNavController().navigate(action)*/
     }
 
-    override fun onGenreClick(genre: Genre) {
-        presenter.onGenreClicked(genre.genre)
+    override fun onGenreClick(genreData: GenreData) {
+        presenter.onGenreClicked(genreData)
     }
 
     private fun setUpAdapter() {

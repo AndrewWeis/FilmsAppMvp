@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.list
+package com.example.filmsapp.ui.list.entities
 
 /**
  * Универсальный объект отображения

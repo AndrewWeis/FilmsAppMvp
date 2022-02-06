@@ -2,13 +2,20 @@ package com.example.filmsapp.ui.list.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.filmsapp.ui.list.*
 import com.example.filmsapp.ui.list.adapters.base.BaseSequenceAdapter
+import com.example.filmsapp.ui.list.entities.Film
+import com.example.filmsapp.ui.list.entities.FilmHeader
+import com.example.filmsapp.ui.list.entities.GenreData
+import com.example.filmsapp.ui.list.entities.GenreHeader
+import com.example.filmsapp.ui.list.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
 import com.example.filmsapp.ui.list.view_holders.HeaderViewHolder
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
 
+/**
+ * Адаптер для отображения заголовков, фильмов, жанров
+ */
 class FilmsAdapter(layoutInflater: LayoutInflater) :
     BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater) {
 
@@ -44,7 +51,7 @@ class FilmsAdapter(layoutInflater: LayoutInflater) :
             is FilmHeader -> TYPE_FILMS_HEADER
             is Film -> TYPE_FILM
             is GenreHeader -> TYPE_GENRES_HEADER
-            is Genre -> TYPE_GENRE
+            is GenreData -> TYPE_GENRE
             else -> NOT_FOUND
         }
     }

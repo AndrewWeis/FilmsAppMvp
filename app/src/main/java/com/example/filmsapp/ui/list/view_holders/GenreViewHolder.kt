@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.GenreItemBinding
-import com.example.filmsapp.ui.list.Genre
-import com.example.filmsapp.ui.list.ListItem
+import com.example.filmsapp.ui.list.entities.GenreData
+import com.example.filmsapp.ui.list.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
-import com.example.filmsapp.ui.utils.ResourcesUtils
+import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
 
 /**
  * View Holder для жанров
@@ -18,11 +18,11 @@ open class GenreViewHolder(
 ) : BaseViewHolder(layoutInflater, parent, R.layout.genre_item) {
 
     private var binding: GenreItemBinding = GenreItemBinding.bind(itemView)
-    private lateinit var genre: Genre
+    private lateinit var genreData: GenreData
     private lateinit var listener: GenreViewHolderListener
 
     fun bind(listItem: ListItem, listener: GenreViewHolderListener) {
-        this.genre = listItem.data as Genre
+        this.genreData = listItem.data as GenreData
         this.listener = listener
 
         showGenreName()
@@ -32,20 +32,20 @@ open class GenreViewHolder(
     }
 
     private fun showGenreName() {
-        binding.genreText.text = genre.genre
+        binding.genreText.text = genreData.genre
     }
 
     private fun showSelectedGenre() {
-        if (genre.isSelected) {
-            binding.genreLayout.setBackgroundColor(ResourcesUtils.getColor(R.color.teal_D7F6F8))
+        if (genreData.isSelected) {
+            binding.genreLayout.setBackgroundColor(getColor(R.color.teal_D7F6F8))
         } else {
-            binding.genreLayout.setBackgroundColor(ResourcesUtils.getColor(R.color.white))
+            binding.genreLayout.setBackgroundColor(getColor(R.color.white))
         }
     }
 
     private fun setListener() {
         itemView.setOnClickListener {
-            listener.onGenreClick(genre)
+            listener.onGenreClick(genreData)
         }
     }
 
@@ -53,6 +53,6 @@ open class GenreViewHolder(
      * ClickListener для жанра
      */
     interface GenreViewHolderListener {
-        fun onGenreClick(genre: Genre)
+        fun onGenreClick(genreData: GenreData)
     }
 }

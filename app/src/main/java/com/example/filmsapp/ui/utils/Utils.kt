@@ -29,6 +29,7 @@ fun setMargins(view: View, left: Float, right: Float, top: Float, bottom: Float)
             getPxByDp(right),
             getPxByDp(bottom)
         )
+
         view.requestLayout()
     }
 }

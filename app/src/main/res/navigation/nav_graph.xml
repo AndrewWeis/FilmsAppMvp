@@ -20,7 +20,7 @@
         tools:layout="@layout/detailed_film_fragment">
         <argument
             android:name="film"
-            app:argType="com.example.filmsapp.ui.list.models.FilmsListRVItem$Film" />
+            app:argType="com.example.filmsapp.ui.list.entities.Film" />
         <argument
             android:name="title"
             app:argType="string" />

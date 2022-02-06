@@ -1,11 +1,13 @@
-package com.example.filmsapp.ui.list
+package com.example.filmsapp.ui.list.entities
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Данные обходимые для [ListItem] жанра
  */
-data class Genre(
+data class GenreData(
     var genre: String,
     var isSelected: Boolean
 )
@@ -27,6 +29,7 @@ data class FilmHeader(
 /**
  * Данные обходимые для [ListItem] фильма
  */
+@Parcelize
 data class Film(
     var id: Long?,
     @SerializedName("localized_name")
@@ -38,7 +41,7 @@ data class Film(
     var imageUrl: String?,
     var description: String?,
     var genres: List<String>?
-)
+) : Parcelable
 
 /**
  * Общий класс для заголовков

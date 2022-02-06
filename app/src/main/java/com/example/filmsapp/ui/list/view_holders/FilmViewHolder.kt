@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FilmItemBinding
 import com.example.filmsapp.ui.data.image_loader.ImageLoader
-import com.example.filmsapp.ui.list.Film
-import com.example.filmsapp.ui.list.ListItem
-import com.example.filmsapp.ui.list.Settings
+import com.example.filmsapp.ui.list.entities.Film
+import com.example.filmsapp.ui.list.entities.ListItem
+import com.example.filmsapp.ui.list.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
 import com.example.filmsapp.ui.utils.ResourcesUtils
 import com.example.filmsapp.ui.utils.setMargins
@@ -38,7 +38,7 @@ open class FilmViewHolder(
     }
 
     private fun showFilmName() {
-        binding.filmTitleText.text = film.name
+        binding.filmTitleText.text = film.localizedName
     }
 
     private fun showFilmPreview() {
