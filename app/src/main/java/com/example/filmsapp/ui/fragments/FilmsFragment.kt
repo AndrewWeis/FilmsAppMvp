@@ -17,9 +17,15 @@ import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.snackbar.MessagesHolder
-import com.example.filmsapp.ui.list.adapters.FilmsListAdapter
+import com.example.filmsapp.ui.list.*
+import com.example.filmsapp.ui.list.adapters.FilmsAdapter
+import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
+import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILMS_HEADER
+import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRE
+import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRES_HEADER
 import com.example.filmsapp.ui.list.models.FilmsListRVItem
-import com.example.filmsapp.ui.list.view_holders.FilmsListViewHolder
+import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
+import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
 import org.koin.android.ext.android.get
 
 /**
@@ -28,13 +34,16 @@ import org.koin.android.ext.android.get
 class FilmsFragment :
     MvpAppCompatFragment(),
     FilmsView,
-    FilmsListViewHolder.FilmViewHolderListener {
+    FilmViewHolder.FilmViewHolderListener,
+    GenreViewHolder.GenreViewHolderListener {
 
     private var _binding: FilmsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var filmsListAdapter: FilmsListAdapter
+    private var listExtension: ListExtension? = null
+    private lateinit var adapter: FilmsAdapter
     private lateinit var messagesHolder: MessagesHolder
+    private val generator: FilmsGenerator = FilmsGenerator()
 
     @InjectPresenter
     lateinit var presenter: FilmsPresenter
@@ -56,8 +65,18 @@ class FilmsFragment :
 
         messagesHolder = MessagesHolder(viewLifecycleOwner, binding.root)
 
-        setUpRecyclerView()
         setUpToolBar()
+        setUpAdapter()
+
+        // todo убрать
+        generator.generateListItems()
+
+        adapter.addListItems(
+            generator.genresHeader,
+            generator.genres,
+            generator.filmsHeader,
+            generator.films
+        )
 
         return view
     }
@@ -68,7 +87,14 @@ class FilmsFragment :
     }
 
     override fun showData(items: List<FilmsListRVItem>) {
-        filmsListAdapter.items = items
+        generator.generateListItems()
+
+        adapter.addListItems(
+            generator.genresHeader,
+            generator.genres,
+            generator.filmsHeader,
+            generator.films
+        )
     }
 
     override fun startContentLoading() {
@@ -83,46 +109,43 @@ class FilmsFragment :
         messagesHolder.showUnhiddenNetworkError(error) { presenter.onRepeatButtonClicked() }
     }
 
-    override fun onFilmClick(item: FilmsListRVItem) {
-        when (item) {
-            is FilmsListRVItem.Film -> {
-                val action = FilmsFragmentDirections
-                    .actionFilmsListToDetailedFilm(
-                        item,
-                        item.name ?: ""
-                    )
-                findNavController().navigate(action)
-            }
-            is FilmsListRVItem.Genre -> {
-                presenter.onGenreClicked(item.name)
-            }
-            is FilmsListRVItem.Title -> {
-                // skip
-            }
-        }
+    override fun onFilmClick(film: Film) {
+        /*val action = FilmsFragmentDirections
+            .actionFilmsListToDetailedFilm(
+                film,
+                film.name ?: ""
+            )
+        findNavController().navigate(action)*/
     }
 
-    private fun setUpRecyclerView() {
-        filmsListAdapter = FilmsListAdapter(this)
+    override fun onGenreClick(genre: Genre) {
+        presenter.onGenreClicked(genre.genre)
+    }
 
-        binding.filmsRV.apply {
-            setHasFixedSize(true)
+    private fun setUpAdapter() {
+        adapter = FilmsAdapter(layoutInflater)
 
-            val manager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        adapter.filmViewHolderListener = this
+        adapter.genreViewHolderListener = this
 
-            manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return when (filmsListAdapter.items[position]) {
-                        is FilmsListRVItem.Film -> 1
-                        is FilmsListRVItem.Genre -> 2
-                        is FilmsListRVItem.Title -> 2
-                    }
+        val layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (adapter.getItemViewType(position)) {
+                    TYPE_FILMS_HEADER -> 2
+                    TYPE_GENRES_HEADER -> 2
+                    TYPE_GENRE -> 2
+                    TYPE_FILM -> 1
+                    else -> throw IllegalArgumentException("Unknown ViewHolder Type!")
                 }
             }
-
-            layoutManager = manager
-            adapter = filmsListAdapter
         }
+
+        listExtension = ListExtension(binding.filmsRV)
+        listExtension?.setLayoutManager(layoutManager)
+        listExtension?.setAdapter(adapter)
     }
 
     private fun setUpToolBar() {
