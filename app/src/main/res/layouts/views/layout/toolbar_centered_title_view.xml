@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/toolbar_title_text"
+        style="@style/Roboto.White.Size18.WW"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="1sp"
+        android:maxLines="1"
+        android:paddingEnd="16dp"
+        android:text="@string/title_films"
+        tools:ignore="RtlSymmetry" />
+
+</LinearLayout>

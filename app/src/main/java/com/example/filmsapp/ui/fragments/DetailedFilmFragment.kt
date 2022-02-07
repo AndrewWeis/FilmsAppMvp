@@ -85,10 +85,10 @@ class DetailedFilmFragment :
     private fun setUpToolBar() {
         appBarProvider?.setAppBarSettings(this)
 
-        val toolBarTextView =
-            appBarProvider?.setCustomToolbarView(R.layout.view_tollbar_title) as MaterialTextView
+        val toolbarTitle =
+            appBarProvider?.setCustomToolbarView(R.layout.toolbar_title_view) as MaterialTextView
 
-        toolBarTextView.text = args.film.name
+        toolbarTitle.text = args.film.name
     }
 
     override fun isBackButtonVisible(): Boolean {

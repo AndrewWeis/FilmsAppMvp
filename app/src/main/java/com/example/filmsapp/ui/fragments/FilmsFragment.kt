@@ -137,9 +137,10 @@ class FilmsFragment :
     private fun setUpToolBar() {
         appBarProvider?.setAppBarSettings(this)
 
-        val textView =
-            appBarProvider?.setCustomToolbarView(R.layout.view_tollbar_title) as MaterialTextView
+        val rootLayout =
+            appBarProvider?.setCustomToolbarView(R.layout.toolbar_centered_title_view) as ViewGroup
 
-        textView.text = getString(R.string.title_films)
+        rootLayout.findViewById<MaterialTextView>(R.id.toolbar_title_text).text =
+            getString(R.string.title_films)
     }
 }
