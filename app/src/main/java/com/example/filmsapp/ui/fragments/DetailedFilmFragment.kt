@@ -50,8 +50,8 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
 
     private fun setDataToViews(film: Film) {
         binding.titleText.text = film.localizedName
-        binding.yearGenreText.text = formYearGenreText(film)
-        binding.rateText.text = film.rating.toString()
+        binding.yearGenreText.text = formYearGenreText(film.genres, film.year)
+        binding.rateText.text = formRatingText(film.rating)
         binding.descriptionText.text = film.description
 
         ImageLoader
@@ -64,12 +64,21 @@ class DetailedFilmFragment : Fragment(R.layout.detailed_film_fragment) {
     }
 
     /**
-     * Формирует текст в виде "драма, приключения, 2017 год"
+     * Формирует текст для строки рейтинга
      */
-    private fun formYearGenreText(film: Film): String {
+    private fun formRatingText(rating: Float?): String {
         var str = ""
-        film.genres?.forEach { str += "${it.firstCharToLowerCase()}, " }
-        str += film.year.toString() + " " + getString(R.string.year)
+        str += rating?.toString()?.dropLast(2) ?: "-"
+        return str
+    }
+
+    /**
+     * Формирует текст для строки жанра с годом
+     */
+    private fun formYearGenreText(genres: List<String>?, year: String?): String {
+        var str = ""
+        genres?.forEach { str += "${it.firstCharToLowerCase()}, " }
+        str += year + " " + getString(R.string.year)
         return str
     }
 
