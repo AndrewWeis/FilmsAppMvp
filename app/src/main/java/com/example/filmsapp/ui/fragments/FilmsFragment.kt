@@ -4,18 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.snackbar.MessagesHolder
+import com.example.filmsapp.ui.fragments.base.BaseNavigationFragment
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILMS_HEADER
@@ -33,7 +29,7 @@ import org.koin.android.ext.android.get
  * Fragment для отображения списка фильмов
  */
 class FilmsFragment :
-    MvpAppCompatFragment(),
+    BaseNavigationFragment(),
     FilmsView,
     FilmViewHolder.FilmViewHolderListener,
     GenreViewHolder.GenreViewHolderListener {
@@ -59,16 +55,14 @@ class FilmsFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         _binding = FilmsFragmentBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         messagesHolder = MessagesHolder(viewLifecycleOwner, view)
 
-        setUpToolBar()
         setUpAdapter()
     }
 
@@ -101,12 +95,8 @@ class FilmsFragment :
     }
 
     override fun onFilmClick(film: Film) {
-        val action = FilmsFragmentDirections
-            .actionFilmsListToDetailedFilm(
-                film,
-                film.name ?: ""
-            )
-        findNavController().navigate(action)
+        val action = FilmsFragmentDirections.actionFilmsListToDetailedFilm(film, film.name ?: "")
+        navigate(action)
     }
 
     override fun onGenreClick(genreData: GenreData) {
@@ -137,15 +127,5 @@ class FilmsFragment :
         listExtension = ListExtension(binding.filmsRecyclerView)
         listExtension?.setLayoutManager(layoutManager)
         listExtension?.setAdapter(adapter)
-    }
-
-    private fun setUpToolBar() {
-        binding.toolbar.title = ""
-
-        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }
