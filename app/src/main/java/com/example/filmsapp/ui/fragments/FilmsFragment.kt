@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.snackbar.MessagesHolder
-import com.example.filmsapp.ui.fragments.base.BaseNavigationFragment
+import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILMS_HEADER
@@ -23,13 +24,16 @@ import com.example.filmsapp.ui.list.entities.GenreData
 import com.example.filmsapp.ui.list.generators.FilmsGenerator
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
+import com.google.android.material.textview.MaterialTextView
+import com.sequenia.app_bar_provider.AppBarSettings
 import org.koin.android.ext.android.get
 
 /**
  * Fragment для отображения списка фильмов
  */
 class FilmsFragment :
-    BaseNavigationFragment(),
+    BaseWithAppBarNavigationFragment(),
+    AppBarSettings,
     FilmsView,
     FilmViewHolder.FilmViewHolderListener,
     GenreViewHolder.GenreViewHolderListener {
@@ -63,6 +67,7 @@ class FilmsFragment :
         super.onViewCreated(view, savedInstanceState)
         messagesHolder = MessagesHolder(viewLifecycleOwner, view)
 
+        setUpToolBar()
         setUpAdapter()
     }
 
@@ -95,7 +100,7 @@ class FilmsFragment :
     }
 
     override fun onFilmClick(film: Film) {
-        val action = FilmsFragmentDirections.actionFilmsListToDetailedFilm(film, film.name ?: "")
+        val action = FilmsFragmentDirections.actionFilmsListToDetailedFilm(film)
         navigate(action)
     }
 
@@ -127,5 +132,14 @@ class FilmsFragment :
         listExtension = ListExtension(binding.filmsRecyclerView)
         listExtension?.setLayoutManager(layoutManager)
         listExtension?.setAdapter(adapter)
+    }
+
+    private fun setUpToolBar() {
+        appBarProvider?.setAppBarSettings(this)
+
+        val textView =
+            appBarProvider?.setCustomToolbarView(R.layout.view_tollbar_title) as MaterialTextView
+
+        textView.text = getString(R.string.title_films)
     }
 }

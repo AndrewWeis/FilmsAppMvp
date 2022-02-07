@@ -2,7 +2,6 @@ package com.example.filmsapp.ui.fragments.base
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.sequenia.app_bar_provider.AppBarProvider
@@ -23,7 +22,6 @@ abstract class BaseWithAppBarNavigationFragment : BaseNavigationFragment(), AppB
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.i("lifecycle", "AppBarAttach")
         if (context is AppBarProvider) {
             appBarProvider = context
         }
@@ -32,7 +30,6 @@ abstract class BaseWithAppBarNavigationFragment : BaseNavigationFragment(), AppB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appBarProvider?.setAppBarSettings(this)
-        Log.i("lifecycle", "AppBar")
     }
 
     override fun onDetach() {
