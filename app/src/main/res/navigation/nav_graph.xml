@@ -5,15 +5,15 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/filmsFragment">
 
-    <fragment
+    <state_fragment
         android:id="@+id/filmsFragment"
         android:name="com.example.filmsapp.ui.fragments.FilmsFragment"
         tools:layout="@layout/films_fragment">
         <action
             android:id="@+id/action_filmsList_to_detailedFilm"
             app:destination="@id/detailedFilmFragment" />
-    </fragment>
-    <fragment
+    </state_fragment>
+    <state_fragment
         android:id="@+id/detailedFilmFragment"
         android:name="com.example.filmsapp.ui.fragments.DetailedFilmFragment"
         android:label="{title}"
@@ -24,5 +24,5 @@
         <argument
             android:name="title"
             app:argType="string" />
-    </fragment>
+    </state_fragment>
 </navigation>
