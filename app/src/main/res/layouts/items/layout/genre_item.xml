@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/genre_text"
         style="@style/Roboto.Black.Size16.MW"
-        android:letterSpacing="0.01"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
+        android:letterSpacing="0.01"
         tools:text="Заголовок" />
 
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/preview_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         tools:ignore="ContentDescription"
         tools:src="@drawable/img_not_found" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_title_text"
         style="@style/Roboto.Black.Size16.MW"
         android:layout_marginTop="8dp"

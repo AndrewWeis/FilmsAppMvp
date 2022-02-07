@@ -9,7 +9,7 @@
     android:paddingEnd="16dp"
     android:paddingBottom="8dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_text"
         style="@style/Roboto.Black.Size20.MW"
         android:letterSpacing="0.01"
