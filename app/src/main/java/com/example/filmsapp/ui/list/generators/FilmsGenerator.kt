@@ -33,6 +33,9 @@ class FilmsGenerator {
     /**
      * Преобразовывает лист фильмов полученных с сервера в лист [ListItem]'ов
      * для отображения жанров.
+     *
+     * @param films список фильмов с сервера
+     * @param selectedGenre выбранный жанр
      */
     private fun generateGenresList(films: List<Film>, selectedGenre: GenreData?) {
         genresList = mutableListOf()
@@ -58,6 +61,9 @@ class FilmsGenerator {
     /**
      * Преобразовывает лист фильмов полученных с сервера в лист [ListItem]'ов
      * для отображения фильмов.
+     *
+     * @param films список фильмов с сервера
+     * @param selectedGenre выбранный жанр
      */
     private fun generateFilmsList(films: List<Film>, selectedGenre: GenreData?) {
         filmsList = mutableListOf()

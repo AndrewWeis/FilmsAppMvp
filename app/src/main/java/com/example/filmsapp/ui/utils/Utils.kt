@@ -18,6 +18,9 @@ fun String.firstCharToLowerCase(): String {
     return replaceFirstChar { it.lowercase() }
 }
 
+/**
+ * Выставляет margins для view
+ */
 fun setMargins(view: View, left: Float, right: Float, top: Float, bottom: Float) {
     if (view.layoutParams is ViewGroup.MarginLayoutParams) {
         val params: ViewGroup.MarginLayoutParams =

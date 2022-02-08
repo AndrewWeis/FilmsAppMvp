@@ -1,6 +1,6 @@
 package com.example.filmsapp.data.network
 
-import com.example.filmsapp.BuildConfig
+import androidx.viewbinding.BuildConfig
 import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
