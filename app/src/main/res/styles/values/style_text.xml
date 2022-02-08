@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Roboto.Black.Size26.CW" parent="@style/TextAppearance.MaterialComponents.Headline5">
+    <style name="Roboto.Black.Size26.Zero_W" parent="@style/TextAppearance.MaterialComponents.Headline5">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">26sp</item>
         <item name="android:textColor">@color/black_000000</item>
     </style>
 
-    <style name="Roboto.Gray.Size16.CW" parent="@style/TextAppearance.MaterialComponents.Body1">
+    <style name="Roboto.Gray.Size16.Zero_W" parent="@style/TextAppearance.MaterialComponents.Body1">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
@@ -29,7 +29,7 @@
         <item name="android:textColor">@color/purple_6936D6</item>
     </style>
 
-    <style name="Roboto.Black.Size14.CW" parent="@style/TextAppearance.MaterialComponents.Body2">
+    <style name="Roboto.Black.Size14.Zero_W" parent="@style/TextAppearance.MaterialComponents.Body2">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>

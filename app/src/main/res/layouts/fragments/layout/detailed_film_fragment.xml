@@ -27,7 +27,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_text"
-            style="@style/Roboto.Black.Size26.CW"
+            style="@style/Roboto.Black.Size26.Zero_W"
             android:layout_marginTop="24dp"
             android:lineSpacingExtra="2sp"
             android:textStyle="bold"
@@ -38,7 +38,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/year_genre_text"
-            style="@style/Roboto.Gray.Size16.CW"
+            style="@style/Roboto.Gray.Size16.Zero_W"
             android:layout_marginTop="8dp"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="1sp"
@@ -67,7 +67,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/description_text"
-            style="@style/Roboto.Black.Size14.CW"
+            style="@style/Roboto.Black.Size14.Zero_W"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="28dp"
             android:letterSpacing="0.01"
