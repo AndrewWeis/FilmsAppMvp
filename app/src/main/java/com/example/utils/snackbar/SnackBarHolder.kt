@@ -2,13 +2,9 @@ package com.example.utils.snackbar
 
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
-import androidx.core.view.allViews
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.example.filmsapp.R
-import com.example.utils.ResourcesUtils.getColor
 import com.google.android.material.snackbar.Snackbar
 import java.lang.ref.WeakReference
 
@@ -17,10 +13,12 @@ import java.lang.ref.WeakReference
  */
 abstract class SnackBarHolder(
     lifecycleOwner: LifecycleOwner,
-    view: View
+    view: View,
+    settings: SnackBarSettings
 ) {
     private var weakReferenceView = WeakReference(view)
     private var currentSnackBar: Snackbar? = null
+    private var settings: SnackBarSettings
 
     init {
         lifecycleOwner.lifecycle.addObserver(LifecycleEventObserver { _, event ->
@@ -28,6 +26,8 @@ abstract class SnackBarHolder(
                 hideMessage()
             }
         })
+
+        this.settings = settings
     }
 
     protected abstract fun createSnackBar(
@@ -36,7 +36,8 @@ abstract class SnackBarHolder(
         actionText: String?,
         duration: Int,
         actionListener: SnackBarActionListener?,
-        snackBarCallback: Snackbar.Callback
+        snackBarCallback: Snackbar.Callback,
+        settings: SnackBarSettings
     ): Snackbar
 
     /**
@@ -117,24 +118,10 @@ abstract class SnackBarHolder(
             return
         }
         currentSnackBar = createSnackBar(
-            view, message, actionText, duration, actionListener, getSnackBarCallback()
+            view, message, actionText, duration, actionListener, getSnackBarCallback(), settings
         )
 
-        setUpSnackBarSettings()
-
         currentSnackBar!!.show()
-    }
-
-    /**
-     * Настраивает значения letterSpacing и textColor у кнопки SnackBar
-     */
-    private fun setUpSnackBarSettings() {
-        val snackbarLayout: Snackbar.SnackbarLayout =
-            currentSnackBar?.view as Snackbar.SnackbarLayout
-
-        val view = snackbarLayout.allViews.find { it is Button }
-        (view as Button).letterSpacing = 0.00f
-        view.setTextColor(getColor(R.color.purple_A77DFF))
     }
 
     private fun getSnackBarCallback(): Snackbar.Callback {

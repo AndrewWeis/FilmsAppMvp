@@ -10,12 +10,13 @@ import com.example.utils.ResourcesUtils.getString
  */
 class MessagesHolder(
     lifecycleOwner: LifecycleOwner,
-    view: View
+    view: View,
+    settings: SnackBarSettings
 ) {
     private var snackBarHolder =
-        DefaultSnackBarHolder(lifecycleOwner, view)
+        CustomSnackBarHolder(lifecycleOwner, view, settings)
 
-    private var infoSnackBarHolder = DefaultSnackBarHolder(lifecycleOwner, view)
+    private var infoSnackBarHolder = CustomSnackBarHolder(lifecycleOwner, view, settings)
 
     fun showNetworkError(message: String) {
         snackBarHolder.showLongDurationMessage(message)

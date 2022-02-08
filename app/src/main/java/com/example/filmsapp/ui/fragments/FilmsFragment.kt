@@ -24,6 +24,7 @@ import com.example.filmsapp.ui.list.generators.FilmsGenerator
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
 import com.example.utils.snackbar.MessagesHolder
+import com.example.utils.snackbar.SnackBarSettings
 import com.google.android.material.textview.MaterialTextView
 import com.sequenia.app_bar_provider.AppBarSettings
 import org.koin.android.ext.android.get
@@ -65,8 +66,8 @@ class FilmsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        messagesHolder = MessagesHolder(viewLifecycleOwner, view)
 
+        setUpSnackBar(view)
         setUpToolBar()
         setUpAdapter()
     }
@@ -142,5 +143,15 @@ class FilmsFragment :
 
         rootLayout.findViewById<MaterialTextView>(R.id.toolbar_title_text).text =
             getString(R.string.title_films)
+    }
+
+    private fun setUpSnackBar(view: View) {
+        val snackBarSettings = SnackBarSettings(
+            buttonTextColor = R.color.purple_A77DFF,
+            backgroundColor = R.color.black_232323,
+            letterSpacing = 0.0f
+        )
+
+        messagesHolder = MessagesHolder(viewLifecycleOwner, view, snackBarSettings)
     }
 }
