@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.GenreItemBinding
-import com.example.filmsapp.ui.list.entities.GenreData
-import com.example.filmsapp.ui.list.entities.ListItem
+import com.example.filmsapp.ui.data.entities.GenreData
+import com.example.filmsapp.ui.data.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
 import com.example.utils.ResourcesUtils.getColor
 

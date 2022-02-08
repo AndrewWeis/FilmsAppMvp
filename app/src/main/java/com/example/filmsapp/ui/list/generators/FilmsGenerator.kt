@@ -1,15 +1,10 @@
 package com.example.filmsapp.ui.list.generators
 
 import com.example.filmsapp.R
-import com.example.filmsapp.ui.list.entities.Film
-import com.example.filmsapp.ui.list.entities.FilmHeader
-import com.example.filmsapp.ui.list.entities.GenreData
-import com.example.filmsapp.ui.list.entities.GenreHeader
-import com.example.filmsapp.ui.list.entities.ListItem
-import com.example.filmsapp.ui.list.entities.Settings
+import com.example.filmsapp.ui.data.entities.*
+import com.example.filmsapp.ui.utils.firstCharToLowerCase
+import com.example.filmsapp.ui.utils.firstCharToUpperCase
 import com.example.utils.ResourcesUtils.getString
-import com.example.utils.firstCharToLowerCase
-import com.example.utils.firstCharToUpperCase
 
 /**
  * Класс для генерации элементов списка

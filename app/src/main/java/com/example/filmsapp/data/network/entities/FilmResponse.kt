@@ -1,6 +1,6 @@
 package com.example.filmsapp.data.network.entities
 
-import com.example.filmsapp.ui.list.entities.Film
+import com.example.filmsapp.ui.data.entities.Film
 
 /**
  * Дата класс, содержащий в себе фильмы, полученные с сервера

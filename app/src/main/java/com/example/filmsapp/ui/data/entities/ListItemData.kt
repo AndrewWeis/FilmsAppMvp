@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.list.entities
+package com.example.filmsapp.ui.data.entities
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

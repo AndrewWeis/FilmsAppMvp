@@ -11,6 +11,8 @@ import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
+import com.example.filmsapp.ui.data.entities.Film
+import com.example.filmsapp.ui.data.entities.GenreData
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
@@ -18,8 +20,6 @@ import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILMS_H
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRE
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRES_HEADER
 import com.example.filmsapp.ui.list.adapters.ListExtension
-import com.example.filmsapp.ui.list.entities.Film
-import com.example.filmsapp.ui.list.entities.GenreData
 import com.example.filmsapp.ui.list.generators.FilmsGenerator
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder

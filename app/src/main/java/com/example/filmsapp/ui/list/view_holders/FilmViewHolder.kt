@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FilmItemBinding
-import com.example.filmsapp.ui.list.entities.Film
-import com.example.filmsapp.ui.list.entities.ListItem
-import com.example.filmsapp.ui.list.entities.Settings
+import com.example.filmsapp.ui.data.entities.Film
+import com.example.filmsapp.ui.data.entities.ListItem
+import com.example.filmsapp.ui.data.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
+import com.example.filmsapp.ui.utils.setMargins
 import com.example.utils.ResourcesUtils
 import com.example.utils.image_loader.ImageLoader
-import com.example.utils.setMargins
 
 /**
  * View Holder для фильмов

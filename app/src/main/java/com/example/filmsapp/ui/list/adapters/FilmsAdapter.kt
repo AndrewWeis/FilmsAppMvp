@@ -2,12 +2,8 @@ package com.example.filmsapp.ui.list.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.example.filmsapp.ui.data.entities.*
 import com.example.filmsapp.ui.list.adapters.base.BaseSequenceAdapter
-import com.example.filmsapp.ui.list.entities.Film
-import com.example.filmsapp.ui.list.entities.FilmHeader
-import com.example.filmsapp.ui.list.entities.GenreData
-import com.example.filmsapp.ui.list.entities.GenreHeader
-import com.example.filmsapp.ui.list.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
 import com.example.filmsapp.ui.list.view_holders.HeaderViewHolder

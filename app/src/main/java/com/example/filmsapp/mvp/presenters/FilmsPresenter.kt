@@ -5,8 +5,8 @@ import com.example.filmsapp.data.network.entities.FilmResponse
 import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.base.BasePresenter
 import com.example.filmsapp.mvp.views.FilmsView
-import com.example.filmsapp.ui.list.entities.Film
-import com.example.filmsapp.ui.list.entities.GenreData
+import com.example.filmsapp.ui.data.entities.Film
+import com.example.filmsapp.ui.data.entities.GenreData
 
 /**
  * Presenter для работы со списком фильмов

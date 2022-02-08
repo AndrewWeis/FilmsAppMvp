@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
+import com.example.filmsapp.ui.data.entities.Film
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
-import com.example.filmsapp.ui.list.entities.Film
+import com.example.filmsapp.ui.utils.firstCharToLowerCase
 import com.example.utils.ResourcesUtils
-import com.example.utils.firstCharToLowerCase
 import com.example.utils.image_loader.ImageLoader
 import com.google.android.material.textview.MaterialTextView
 import com.sequenia.app_bar_provider.AppBarSettings

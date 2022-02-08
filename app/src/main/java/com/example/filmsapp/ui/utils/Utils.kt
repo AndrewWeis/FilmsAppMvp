@@ -1,4 +1,4 @@
-package com.example.utils
+package com.example.filmsapp.ui.utils
 
 import android.view.View
 import android.view.ViewGroup
