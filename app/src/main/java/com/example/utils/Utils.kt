@@ -1,8 +1,8 @@
-package com.example.filmsapp.ui.utils
+package com.example.utils
 
 import android.view.View
 import android.view.ViewGroup
-import com.example.filmsapp.ui.utils.ResourcesUtils.getPxByDp
+import com.example.utils.ResourcesUtils.getPxByDp
 
 /**
  * Переводит первую букву строки в заглавную

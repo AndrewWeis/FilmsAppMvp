@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.image_loader
+package com.example.utils.image_loader
 
 import android.content.Context
 

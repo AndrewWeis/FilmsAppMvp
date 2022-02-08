@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.keyboard
+package com.example.utils.keyboard
 
 import android.app.Activity
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.snackbar
+package com.example.utils.snackbar
 
 /**
  * Слушатель действия для {@link SnackBarHolder}

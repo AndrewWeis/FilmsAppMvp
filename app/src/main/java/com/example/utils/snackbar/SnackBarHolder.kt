@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.snackbar
+package com.example.utils.snackbar
 
 import android.text.TextUtils
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmsapp.R
-import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
+import com.example.utils.ResourcesUtils.getColor
 import com.google.android.material.snackbar.Snackbar
 import java.lang.ref.WeakReference
 

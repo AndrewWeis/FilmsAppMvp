@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.screen_locker
+package com.example.utils.screen_locker
 
 import android.view.Window
 import android.view.WindowManager

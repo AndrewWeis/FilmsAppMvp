@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.data.keyboard
+package com.example.utils.keyboard
 
 /**
  * Слушатель на видимость клавиатуры

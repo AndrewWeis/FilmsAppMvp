@@ -5,8 +5,8 @@ import android.app.Application
 import android.content.Context
 import com.example.filmsapp.di.modelsModule
 import com.example.filmsapp.di.networkModule
-import com.example.filmsapp.ui.data.image_loader.GlideLoaderCreator
-import com.example.filmsapp.ui.data.image_loader.ImageLoader
+import com.example.utils.image_loader.GlideLoaderCreator
+import com.example.utils.image_loader.ImageLoader
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

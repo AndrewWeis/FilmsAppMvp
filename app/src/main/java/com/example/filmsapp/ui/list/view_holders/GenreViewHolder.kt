@@ -7,7 +7,7 @@ import com.example.filmsapp.databinding.GenreItemBinding
 import com.example.filmsapp.ui.list.entities.GenreData
 import com.example.filmsapp.ui.list.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
-import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
+import com.example.utils.ResourcesUtils.getColor
 
 /**
  * View Holder для жанров

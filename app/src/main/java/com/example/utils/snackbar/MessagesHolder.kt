@@ -1,9 +1,9 @@
-package com.example.filmsapp.ui.data.snackbar
+package com.example.utils.snackbar
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmsapp.R
-import com.example.filmsapp.ui.utils.ResourcesUtils.getString
+import com.example.utils.ResourcesUtils.getString
 
 /**
  * Держатель сообщений разных типов

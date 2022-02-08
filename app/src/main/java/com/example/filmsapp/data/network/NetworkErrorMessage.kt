@@ -2,7 +2,7 @@ package com.example.filmsapp.data.network
 
 import androidx.annotation.StringRes
 import com.example.filmsapp.R
-import com.example.filmsapp.ui.utils.ResourcesUtils
+import com.example.utils.ResourcesUtils
 
 /**
  * Класс, представлющий сообщения интернет ошибки

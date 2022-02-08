@@ -2,9 +2,9 @@ package com.example.filmsapp.ui.fragments.base
 
 import android.view.Window
 import com.arellomobile.mvp.MvpAppCompatFragment
-import com.example.filmsapp.ui.data.keyboard.KeyboardEventManager
-import com.example.filmsapp.ui.data.keyboard.KeyboardVisibilityListener
-import com.example.filmsapp.ui.data.screen_locker.ScreenLocker
+import com.example.utils.keyboard.KeyboardEventManager
+import com.example.utils.keyboard.KeyboardVisibilityListener
+import com.example.utils.screen_locker.ScreenLocker
 
 /**
  * Базовый Fragment

@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.utils
+package com.example.utils
 
 import android.content.res.Configuration
 import android.content.res.Resources

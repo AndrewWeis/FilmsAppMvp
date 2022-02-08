@@ -8,7 +8,7 @@ import com.example.filmsapp.ui.list.entities.Header
 import com.example.filmsapp.ui.list.entities.ListItem
 import com.example.filmsapp.ui.list.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
-import com.example.filmsapp.ui.utils.setMargins
+import com.example.utils.setMargins
 
 /**
  * View Holder для заголовков
