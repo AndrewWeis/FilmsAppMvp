@@ -11,7 +11,11 @@
         tools:layout="@layout/films_fragment">
         <action
             android:id="@+id/action_filmsList_to_detailedFilm"
-            app:destination="@id/detailedFilmFragment" />
+            app:destination="@id/detailedFilmFragment">
+            <argument
+                android:name="film"
+                app:argType="com.example.filmsapp.ui.list.entities.Film" />
+        </action>
     </state_fragment>
     <state_fragment
         android:id="@+id/detailedFilmFragment"

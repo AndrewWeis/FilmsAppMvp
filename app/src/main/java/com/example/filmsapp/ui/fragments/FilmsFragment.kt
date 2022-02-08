@@ -76,7 +76,7 @@ class FilmsFragment :
         _binding = null
     }
 
-    override fun showData(items: List<Film>, selectedGenre: GenreData?) {
+    override fun showFilms(items: List<Film>, selectedGenre: GenreData?) {
         generator.generateList(items, selectedGenre)
 
         adapter.addListItems(

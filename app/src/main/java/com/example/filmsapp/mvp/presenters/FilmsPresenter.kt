@@ -26,7 +26,7 @@ class FilmsPresenter(
 
     fun onGenreClicked(genre: GenreData) {
         selectedGenre = genre
-        viewState.showData(films, selectedGenre)
+        viewState.showFilms(films, selectedGenre)
     }
 
     fun onRepeatButtonClicked() {
@@ -42,7 +42,7 @@ class FilmsPresenter(
                 films = data?.films ?: listOf()
 
                 viewState.endContentLoading()
-                viewState.showData(films, selectedGenre)
+                viewState.showFilms(films, selectedGenre)
             }
 
             override fun onError(error: String) {

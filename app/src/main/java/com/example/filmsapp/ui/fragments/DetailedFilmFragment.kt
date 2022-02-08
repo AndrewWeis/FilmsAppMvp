@@ -48,6 +48,10 @@ class DetailedFilmFragment :
         _binding = null
     }
 
+    override fun isBackButtonVisible(): Boolean {
+        return true
+    }
+
     private fun setDataToViews(film: Film) {
         binding.titleText.text = film.localizedName
         binding.yearGenreText.text = formYearGenreText(film.genres, film.year)
@@ -89,9 +93,5 @@ class DetailedFilmFragment :
             appBarProvider?.setCustomToolbarView(R.layout.toolbar_title_view) as MaterialTextView
 
         toolbarTitle.text = args.film.name
-    }
-
-    override fun isBackButtonVisible(): Boolean {
-        return true
     }
 }

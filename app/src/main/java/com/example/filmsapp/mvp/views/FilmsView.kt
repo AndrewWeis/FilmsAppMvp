@@ -14,5 +14,5 @@ interface FilmsView : ContentLoadingView {
      * Показать контент
      */
     @StateStrategyType(value = AddToEndSingleStrategy::class)
-    fun showData(items: List<Film>, selectedGenre: GenreData?)
+    fun showFilms(items: List<Film>, selectedGenre: GenreData?)
 }

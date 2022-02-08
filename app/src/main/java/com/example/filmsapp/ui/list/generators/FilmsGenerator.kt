@@ -41,15 +41,15 @@ class FilmsGenerator {
      */
     private fun generateGenresList(films: List<Film>, selectedGenre: GenreData?) {
         genresList = mutableListOf()
-        val genresFromFilmList: MutableSet<String> = sortedSetOf()
+        val genresFromFilms: MutableSet<String> = sortedSetOf()
 
         films.forEach { film ->
             film.genres?.forEach { genre ->
-                genresFromFilmList.add(genre)
+                genresFromFilms.add(genre)
             }
         }
 
-        genresFromFilmList.forEach {
+        genresFromFilms.forEach {
             val genre = it.firstCharToUpperCase()
 
             if (selectedGenre != null && selectedGenre.genre == genre) {
@@ -67,26 +67,26 @@ class FilmsGenerator {
     private fun generateFilmsList(films: List<Film>, selectedGenre: GenreData?) {
         filmsList = mutableListOf()
 
-        var sortedFilmsList = films.sortedBy { it.localizedName }
+        var sortedFilms = films.sortedBy { it.localizedName }
 
         if (selectedGenre != null) {
-            sortedFilmsList = sortedFilmsList.filter { film ->
+            sortedFilms = sortedFilms.filter { film ->
                 film.genres?.contains(selectedGenre.genre.firstCharToLowerCase()) == true
             }
         }
 
-        for (i in sortedFilmsList.indices) {
+        for (i in sortedFilms.indices) {
             if (i % 2 == 0) {
                 filmsList.add(
                     ListItem(
-                        data = sortedFilmsList[i],
+                        data = sortedFilms[i],
                         settings = Settings(16f, 8f, 0f, 16f)
                     )
                 )
             } else {
                 filmsList.add(
                     ListItem(
-                        data = sortedFilmsList[i],
+                        data = sortedFilms[i],
                         settings = Settings(8f, 16f, 0f, 16f)
                     )
                 )
