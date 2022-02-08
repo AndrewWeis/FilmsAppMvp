@@ -22,7 +22,7 @@
         <item name="android:textColor">@color/purple_6936D6</item>
     </style>
 
-    <style name="Roboto.Purple.Size16.WW" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+    <style name="Roboto.Purple.Size16.WW" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
@@ -32,7 +32,7 @@
     <style name="Roboto.Black.Size14.CW" parent="@style/TextAppearance.MaterialComponents.Body2">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black_000000</item>
     </style>
 

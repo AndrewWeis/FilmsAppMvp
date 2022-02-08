@@ -10,11 +10,8 @@
         android:id="@+id/toolbar_title_text"
         style="@style/Roboto.White.Size18.WW"
         android:layout_gravity="center"
-        android:ellipsize="end"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="1sp"
-        android:maxLines="1"
-        android:paddingEnd="16dp"
         android:text="@string/title_films"
         tools:ignore="RtlSymmetry" />
 

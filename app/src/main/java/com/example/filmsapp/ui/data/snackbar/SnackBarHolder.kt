@@ -7,6 +7,8 @@ import androidx.core.view.allViews
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import com.example.filmsapp.R
+import com.example.filmsapp.ui.utils.ResourcesUtils.getColor
 import com.google.android.material.snackbar.Snackbar
 import java.lang.ref.WeakReference
 
@@ -118,22 +120,21 @@ abstract class SnackBarHolder(
             view, message, actionText, duration, actionListener, getSnackBarCallback()
         )
 
-        setSnackBarButtonLetterSpacing(0.00f)
+        setUpSnackBarSettings()
 
         currentSnackBar!!.show()
     }
 
     /**
-     * Выставляет значение letterSpacing у кнопки SnackBar
-     *
-     * @param letterSpacing отступ между буквами
+     * Настраивает значения letterSpacing и textColor у кнопки SnackBar
      */
-    private fun setSnackBarButtonLetterSpacing(letterSpacing: Float) {
+    private fun setUpSnackBarSettings() {
         val snackbarLayout: Snackbar.SnackbarLayout =
             currentSnackBar?.view as Snackbar.SnackbarLayout
 
         val view = snackbarLayout.allViews.find { it is Button }
-        (view as Button).letterSpacing = letterSpacing
+        (view as Button).letterSpacing = 0.00f
+        view.setTextColor(getColor(R.color.purple_A77DFF))
     }
 
     private fun getSnackBarCallback(): Snackbar.Callback {

@@ -37,7 +37,7 @@ class HeaderViewHolder(
 
     private fun setHeaderMargins() {
         setMargins(
-            binding.titleLayout,
+            binding.headerLayout,
             settings.leftMargin,
             settings.rightMargin,
             settings.topMargin,

@@ -129,7 +129,7 @@ class FilmsFragment :
             }
         }
 
-        listExtension = ListExtension(binding.filmsRecyclerView)
+        listExtension = ListExtension(binding.filmsList)
         listExtension?.setLayoutManager(layoutManager)
         listExtension?.setAdapter(adapter)
     }
