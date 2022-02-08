@@ -52,6 +52,10 @@ class DetailedFilmFragment :
         return true
     }
 
+    override fun getHomeAsUpIndicatorRes(): Int {
+        return R.drawable.ic_arrow_left_25
+    }
+
     private fun setDataToViews(film: Film) {
         binding.titleText.text = film.localizedName
         binding.yearGenreText.text = formYearGenreText(film.genres, film.year)
