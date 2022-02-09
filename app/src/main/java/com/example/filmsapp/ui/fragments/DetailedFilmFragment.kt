@@ -9,7 +9,6 @@ import com.example.filmsapp.R
 import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
 import com.example.filmsapp.ui.data.entities.Film
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
-import com.example.filmsapp.ui.utils.firstCharToLowerCase
 import com.example.utils.ResourcesUtils
 import com.example.utils.image_loader.ImageLoader
 import com.google.android.material.textview.MaterialTextView
@@ -75,9 +74,7 @@ class DetailedFilmFragment :
      * Формирует текст для строки рейтинга
      */
     private fun formRatingText(rating: Float?): String {
-        var str = ""
-        str += rating?.toString()?.dropLast(2) ?: "-"
-        return str
+        return rating?.toString()?.dropLast(2) ?: "-"
     }
 
     /**
@@ -85,7 +82,7 @@ class DetailedFilmFragment :
      */
     private fun formYearGenreText(genres: List<String>?, year: String?): String {
         var str = ""
-        genres?.forEach { str += "${it.firstCharToLowerCase()}, " }
+        genres?.forEach { str += "$it, " }
         str += year + " " + getString(R.string.year)
         return str
     }
