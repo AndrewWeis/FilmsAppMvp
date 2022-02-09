@@ -121,9 +121,7 @@ class FilmsFragment :
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (adapter.getItemViewType(position)) {
-                    TYPE_FILMS_HEADER -> 2
-                    TYPE_GENRES_HEADER -> 2
-                    TYPE_GENRE -> 2
+                    TYPE_FILMS_HEADER, TYPE_GENRES_HEADER, TYPE_GENRE -> 2
                     TYPE_FILM -> 1
                     else -> throw IllegalArgumentException("Unknown ViewHolder Type!")
                 }
