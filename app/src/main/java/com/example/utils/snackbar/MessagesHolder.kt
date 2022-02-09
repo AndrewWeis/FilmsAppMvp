@@ -1,5 +1,6 @@
 package com.example.utils.snackbar
 
+import DefaultSnackBarHolder
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmsapp.R
@@ -11,12 +12,12 @@ import com.example.utils.ResourcesUtils.getString
 class MessagesHolder(
     lifecycleOwner: LifecycleOwner,
     view: View,
-    settings: SnackBarSettings
+    customView: View?
 ) {
     private var snackBarHolder =
-        CustomSnackBarHolder(lifecycleOwner, view, settings)
+        DefaultSnackBarHolder(lifecycleOwner, view, customView)
 
-    private var infoSnackBarHolder = CustomSnackBarHolder(lifecycleOwner, view, settings)
+    private var infoSnackBarHolder = DefaultSnackBarHolder(lifecycleOwner, view, customView)
 
     fun showNetworkError(message: String) {
         snackBarHolder.showLongDurationMessage(message)

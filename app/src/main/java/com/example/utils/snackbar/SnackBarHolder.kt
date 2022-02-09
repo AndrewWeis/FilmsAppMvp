@@ -14,11 +14,11 @@ import java.lang.ref.WeakReference
 abstract class SnackBarHolder(
     lifecycleOwner: LifecycleOwner,
     view: View,
-    settings: SnackBarSettings
+    customView: View?,
 ) {
     private var weakReferenceView = WeakReference(view)
+    private var wearReferenceCustomView = WeakReference(customView)
     private var currentSnackBar: Snackbar? = null
-    private var settings: SnackBarSettings
 
     init {
         lifecycleOwner.lifecycle.addObserver(LifecycleEventObserver { _, event ->
@@ -26,18 +26,16 @@ abstract class SnackBarHolder(
                 hideMessage()
             }
         })
-
-        this.settings = settings
     }
 
     protected abstract fun createSnackBar(
         view: View,
+        customView: View?,
         message: String,
         actionText: String?,
         duration: Int,
         actionListener: SnackBarActionListener?,
         snackBarCallback: Snackbar.Callback,
-        settings: SnackBarSettings
     ): Snackbar
 
     /**
@@ -113,12 +111,15 @@ abstract class SnackBarHolder(
         actionText: String? = null,
         actionListener: SnackBarActionListener? = null
     ) {
+        val customView = wearReferenceCustomView.get()
+
         val view = weakReferenceView.get()
         if (view == null || TextUtils.isEmpty(message)) {
             return
         }
+
         currentSnackBar = createSnackBar(
-            view, message, actionText, duration, actionListener, getSnackBarCallback(), settings
+            view, customView, message, actionText, duration, actionListener, getSnackBarCallback(),
         )
 
         currentSnackBar!!.show()
