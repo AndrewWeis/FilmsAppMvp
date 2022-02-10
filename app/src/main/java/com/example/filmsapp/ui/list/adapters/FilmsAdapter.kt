@@ -5,18 +5,21 @@ import android.view.ViewGroup
 import com.example.filmsapp.ui.data.entities.*
 import com.example.filmsapp.ui.list.adapters.base.BaseSequenceAdapter
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
+import com.example.filmsapp.ui.list.view_holders.FilmViewHolder.FilmViewHolderListener
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
+import com.example.filmsapp.ui.list.view_holders.GenreViewHolder.GenreViewHolderListener
 import com.example.filmsapp.ui.list.view_holders.HeaderViewHolder
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
 
 /**
  * Адаптер для отображения заголовков, фильмов, жанров
  */
-class FilmsAdapter(layoutInflater: LayoutInflater) :
+class FilmsAdapter(
+    layoutInflater: LayoutInflater,
+    val genreViewHolderListener: GenreViewHolderListener,
+    val filmViewHolderListener: FilmViewHolderListener
+) :
     BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater) {
-
-    lateinit var genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
-    lateinit var filmViewHolderListener: FilmViewHolder.FilmViewHolderListener
 
     override fun onBindViewHolder(holder: BaseViewHolder, item: ListItem) {
         when (holder) {

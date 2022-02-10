@@ -21,8 +21,8 @@ import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRE
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_GENRES_HEADER
 import com.example.filmsapp.ui.list.adapters.ListExtension
 import com.example.filmsapp.ui.list.generators.FilmsGenerator
-import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
-import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
+import com.example.filmsapp.ui.list.view_holders.FilmViewHolder.FilmViewHolderListener
+import com.example.filmsapp.ui.list.view_holders.GenreViewHolder.GenreViewHolderListener
 import com.example.utils.snackbar.MessagesHolder
 import com.google.android.material.textview.MaterialTextView
 import com.sequenia.app_bar_provider.AppBarSettings
@@ -35,8 +35,8 @@ class FilmsFragment :
     BaseWithAppBarNavigationFragment(),
     AppBarSettings,
     FilmsView,
-    FilmViewHolder.FilmViewHolderListener,
-    GenreViewHolder.GenreViewHolderListener {
+    FilmViewHolderListener,
+    GenreViewHolderListener {
 
     private var _binding: FilmsFragmentBinding? = null
     private val binding get() = _binding!!
@@ -109,10 +109,11 @@ class FilmsFragment :
     }
 
     private fun setUpAdapter() {
-        adapter = FilmsAdapter(layoutInflater)
-
-        adapter.filmViewHolderListener = this
-        adapter.genreViewHolderListener = this
+        adapter = FilmsAdapter(
+            layoutInflater = layoutInflater,
+            genreViewHolderListener = this,
+            filmViewHolderListener = this
+        )
 
         val layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
