@@ -16,7 +16,7 @@ class FilmsPresenter(
     private val filmModel: FilmModel
 ) : BasePresenter<FilmsView>() {
 
-    private var films: List<Film> = listOf()
+    private var films: List<Film> = emptyList()
     private var selectedGenre: GenreData? = null
 
     override fun onFirstViewAttach() {
@@ -39,7 +39,7 @@ class FilmsPresenter(
         filmModel.getFilms(object : FilmModel.GetFilmsCallback {
 
             override fun onSuccess(data: FilmResponse?) {
-                films = data?.films ?: listOf()
+                films = data?.films.orEmpty()
 
                 viewState.endContentLoading()
                 viewState.showFilms(films, selectedGenre)
