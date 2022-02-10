@@ -8,7 +8,7 @@ import com.example.filmsapp.ui.data.entities.HeaderData
 import com.example.filmsapp.ui.data.entities.ListItem
 import com.example.filmsapp.ui.data.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
-import com.example.filmsapp.ui.utils.setMargins
+import com.example.filmsapp.ui.utils.ViewUtils
 
 /**
  * View Holder для заголовков
@@ -36,7 +36,7 @@ class HeaderViewHolder(
     }
 
     private fun setHeaderMargins() {
-        setMargins(
+        ViewUtils.setMargins(
             binding.headerView,
             settings.leftMargin,
             settings.rightMargin,

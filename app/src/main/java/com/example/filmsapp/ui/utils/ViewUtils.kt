@@ -5,20 +5,24 @@ import android.view.ViewGroup
 import com.example.utils.ResourcesUtils.getPxByDp
 
 /**
- * Выставляет margins для view
+ * Класс содержит функции помощники для работы с view
  */
-fun setMargins(view: View, left: Float, right: Float, top: Float, bottom: Float) {
-    if (view.layoutParams is ViewGroup.MarginLayoutParams) {
-        val params: ViewGroup.MarginLayoutParams =
-            view.layoutParams as ViewGroup.MarginLayoutParams
+object ViewUtils {
 
-        params.setMargins(
-            getPxByDp(left),
-            getPxByDp(top),
-            getPxByDp(right),
-            getPxByDp(bottom)
-        )
+    /**
+     * Выставляет margins для view
+     */
+    fun setMargins(view: View, left: Float?, right: Float?, top: Float?, bottom: Float?) {
+        if (view.layoutParams is ViewGroup.MarginLayoutParams) {
+            val params: ViewGroup.MarginLayoutParams =
+                view.layoutParams as ViewGroup.MarginLayoutParams
 
-        view.requestLayout()
+            left?.let { params.leftMargin = getPxByDp(it) }
+            right?.let { params.rightMargin = getPxByDp(it) }
+            top?.let { params.topMargin = getPxByDp(it) }
+            bottom?.let { params.bottomMargin = getPxByDp(it) }
+
+            view.requestLayout()
+        }
     }
 }

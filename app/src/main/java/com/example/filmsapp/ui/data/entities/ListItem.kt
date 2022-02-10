@@ -22,10 +22,10 @@ class Errors(var message: String?) {
  * Настройки объекта отображения
  */
 class Settings(
-    var leftMargin: Float,
-    var rightMargin: Float,
-    var topMargin: Float,
-    var bottomMargin: Float
+    var leftMargin: Float?,
+    var rightMargin: Float?,
+    var topMargin: Float?,
+    var bottomMargin: Float?
 ) {
-    constructor() : this(0f, 0f, 0f, 0f)
+    constructor() : this(null, null, null, null)
 }
