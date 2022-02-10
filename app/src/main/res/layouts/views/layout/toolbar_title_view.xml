@@ -10,6 +10,4 @@
     android:maxLines="1"
     android:paddingEnd="16dp"
     android:text="@string/title_films"
-    tools:ignore="RtlSymmetry">
-
-</com.google.android.material.textview.MaterialTextView>
+    tools:ignore="RtlSymmetry"/>
