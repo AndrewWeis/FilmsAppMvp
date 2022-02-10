@@ -8,24 +8,48 @@ import com.example.utils.ResourcesUtils.getString
  * Класс для генерации элементов списка
  */
 class FilmsGenerator {
-    val genresHeader =
-        ListItem(
-            data = GenreHeader(getString(R.string.title_genres)),
-            settings = Settings(0f, 0f, 8f, 0f)
+
+    fun generateListItems(films: List<Film>, selectedGenre: GenreData?): List<ListItem> {
+
+        val genresHeaderSettings = Settings(
+            leftMargin = 0f,
+            rightMargin = 0f,
+            topMargin = 8f,
+            bottomMargin = 0f
         )
 
-    val filmsHeader =
-        ListItem(
-            data = FilmHeader(getString(R.string.title_films)),
-            settings = Settings(0f, 0f, 16f, 8f)
+        val filmsHeaderSettings = Settings(
+            leftMargin = 0f,
+            rightMargin = 0f,
+            topMargin = 16f,
+            bottomMargin = 8f
         )
 
-    var genresList: MutableList<ListItem> = mutableListOf()
-    var filmsList: MutableList<ListItem> = mutableListOf()
+        val listItems: MutableList<ListItem> = mutableListOf()
 
-    fun generateList(films: List<Film>, selectedGenre: GenreData?) {
-        generateGenresList(films, selectedGenre)
-        generateFilmsList(films, selectedGenre)
+        listItems.add(
+            ListItem(
+                type = ListItemTypes.GENRES_HEADER,
+                data = HeaderData(getString(R.string.title_genres)),
+                settings = genresHeaderSettings
+            )
+        )
+
+        val genresListItems = generateGenreListItems(films, selectedGenre)
+        listItems.addAll(genresListItems)
+
+        listItems.add(
+            ListItem(
+                type = ListItemTypes.FILMS_HEADER,
+                data = HeaderData(getString(R.string.title_films)),
+                settings = filmsHeaderSettings
+            )
+        )
+
+        val filmsListItems = generateFilmsListItems(films, selectedGenre)
+        listItems.addAll(filmsListItems)
+
+        return listItems
     }
 
     /**
@@ -35,8 +59,12 @@ class FilmsGenerator {
      * @param films список фильмов с сервера
      * @param selectedGenre выбранный жанр
      */
-    private fun generateGenresList(films: List<Film>, selectedGenre: GenreData?) {
-        genresList = mutableListOf()
+    private fun generateGenreListItems(
+        films: List<Film>,
+        selectedGenre: GenreData?
+    ): List<ListItem> {
+        val genresList: MutableList<ListItem> = mutableListOf()
+
         val genresFromFilms: MutableSet<String> = sortedSetOf()
 
         films.forEach { film ->
@@ -49,11 +77,23 @@ class FilmsGenerator {
             val genre = firstCharToUpperCase(it)
 
             if (selectedGenre != null && selectedGenre.genre == genre) {
-                genresList.add(ListItem(data = GenreData(genre, true)))
+                genresList.add(
+                    ListItem(
+                        type = ListItemTypes.GENRE,
+                        data = GenreData(genre, true)
+                    )
+                )
             } else {
-                genresList.add(ListItem(data = GenreData(genre, false)))
+                genresList.add(
+                    ListItem(
+                        type = ListItemTypes.GENRE,
+                        data = GenreData(genre, false)
+                    )
+                )
             }
         }
+
+        return genresList
     }
 
     /**
@@ -63,8 +103,11 @@ class FilmsGenerator {
      * @param films список фильмов с сервера
      * @param selectedGenre выбранный жанр
      */
-    private fun generateFilmsList(films: List<Film>, selectedGenre: GenreData?) {
-        filmsList = mutableListOf()
+    private fun generateFilmsListItems(
+        films: List<Film>,
+        selectedGenre: GenreData?
+    ): List<ListItem> {
+        val filmsList: MutableList<ListItem> = mutableListOf()
 
         var sortedFilms = films.sortedBy { it.localizedName }
 
@@ -78,6 +121,7 @@ class FilmsGenerator {
             if (i % 2 == 0) {
                 filmsList.add(
                     ListItem(
+                        type = ListItemTypes.FILM,
                         data = sortedFilms[i],
                         settings = Settings(16f, 8f, 0f, 16f)
                     )
@@ -85,12 +129,15 @@ class FilmsGenerator {
             } else {
                 filmsList.add(
                     ListItem(
+                        type = ListItemTypes.FILM,
                         data = sortedFilms[i],
                         settings = Settings(8f, 16f, 0f, 16f)
                     )
                 )
             }
         }
+
+        return filmsList
     }
 
     /**

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.HeaderItemBinding
-import com.example.filmsapp.ui.data.entities.Header
+import com.example.filmsapp.ui.data.entities.HeaderData
 import com.example.filmsapp.ui.data.entities.ListItem
 import com.example.filmsapp.ui.data.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
@@ -19,11 +19,11 @@ class HeaderViewHolder(
 ) : BaseViewHolder(layoutInflater, parent, R.layout.header_item) {
 
     private var binding: HeaderItemBinding = HeaderItemBinding.bind(itemView)
-    private lateinit var header: Header
+    private lateinit var header: HeaderData
     private lateinit var settings: Settings
 
     fun bind(listItem: ListItem) {
-        this.header = listItem.data as Header
+        this.header = listItem.data as HeaderData
         this.settings = listItem.settings
 
         showHeaderName()

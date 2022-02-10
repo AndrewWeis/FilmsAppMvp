@@ -77,14 +77,8 @@ class FilmsFragment :
     }
 
     override fun showFilms(items: List<Film>, selectedGenre: GenreData?) {
-        generator.generateList(items, selectedGenre)
-
-        adapter.addListItems(
-            generator.genresHeader,
-            generator.genresList,
-            generator.filmsHeader,
-            generator.filmsList
-        )
+        val listItems = generator.generateListItems(items, selectedGenre)
+        adapter.addListItems(listItems)
     }
 
     override fun startContentLoading() {

@@ -13,18 +13,11 @@ data class GenreData(
 )
 
 /**
- * Данные обходимые для [ListItem] заголовка жанра
+ * Данные обходимые для [ListItem] заголовка
  */
-data class GenreHeader(
-    override var title: String
-) : Header
-
-/**
- * Данные обходимые для [ListItem] заголовка фильма
- */
-data class FilmHeader(
-    override var title: String
-) : Header
+data class HeaderData(
+    var title: String
+)
 
 /**
  * Данные обходимые для [ListItem] фильма
@@ -42,10 +35,3 @@ data class Film(
     var description: String?,
     var genres: List<String>?
 ) : Parcelable
-
-/**
- * Общий класс для заголовков
- */
-interface Header {
-    var title: String
-}

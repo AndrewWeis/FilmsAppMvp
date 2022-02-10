@@ -38,5 +38,17 @@ enum class ListItemTypes {
     INLINE_SELECT,
 
     // ListItem с Switch элементом
-    SWITCH
+    SWITCH,
+
+    // ListItem c элементом жанр
+    GENRE,
+
+    // ListItem c элементом фильм
+    FILM,
+
+    // ListItem c элементом заголовок для жанров
+    GENRES_HEADER,
+
+    // ListItem c элементом заголовок для фильмов
+    FILMS_HEADER
 }

@@ -46,25 +46,17 @@ class FilmsAdapter(
     }
 
     override fun getItemViewType(item: ListItem): Int {
-        return when (item.data) {
-            is FilmHeader -> TYPE_FILMS_HEADER
-            is Film -> TYPE_FILM
-            is GenreHeader -> TYPE_GENRES_HEADER
-            is GenreData -> TYPE_GENRE
+        return when (item.type) {
+            ListItemTypes.FILMS_HEADER -> TYPE_FILMS_HEADER
+            ListItemTypes.FILM -> TYPE_FILM
+            ListItemTypes.GENRES_HEADER -> TYPE_GENRES_HEADER
+            ListItemTypes.GENRE -> TYPE_GENRE
             else -> NOT_FOUND
         }
     }
 
-    fun addListItems(
-        genresHeader: ListItem,
-        genres: List<ListItem>,
-        filmsHeader: ListItem,
-        films: List<ListItem>
-    ) {
-        updateItem(genresHeader, TYPE_GENRES_HEADER)
-        updateItems(genres, TYPE_GENRE)
-        updateItem(filmsHeader, TYPE_FILMS_HEADER)
-        updateItems(films, TYPE_FILM)
+    fun addListItems(listItems: List<ListItem>) {
+        updateItems(listItems)
     }
 
     companion object {
