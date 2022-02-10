@@ -1,6 +1,7 @@
 package com.example.filmsapp.ui.list.generators
 
 import com.example.filmsapp.R
+import com.example.filmsapp.data.network.entities.Film
 import com.example.filmsapp.ui.data.entities.*
 import com.example.utils.ResourcesUtils.getString
 

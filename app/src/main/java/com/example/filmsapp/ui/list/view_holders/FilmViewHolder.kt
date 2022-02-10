@@ -3,8 +3,8 @@ package com.example.filmsapp.ui.list.view_holders
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmsapp.R
+import com.example.filmsapp.data.network.entities.Film
 import com.example.filmsapp.databinding.FilmItemBinding
-import com.example.filmsapp.ui.data.entities.Film
 import com.example.filmsapp.ui.data.entities.ListItem
 import com.example.filmsapp.ui.data.entities.Settings
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder

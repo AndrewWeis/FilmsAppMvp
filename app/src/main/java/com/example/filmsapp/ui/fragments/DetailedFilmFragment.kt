@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.filmsapp.R
+import com.example.filmsapp.data.network.entities.Film
 import com.example.filmsapp.databinding.DetailedFilmFragmentBinding
-import com.example.filmsapp.ui.data.entities.Film
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.utils.ResourcesUtils
 import com.example.utils.image_loader.ImageLoader
