@@ -18,9 +18,7 @@ open class BaseNavigationFragment : BaseFragment() {
         initNavigationController()
     }
 
-    override fun onBackPressed(shouldHideKeyboard: Boolean) {
-        super.onBackPressed(shouldHideKeyboard)
-
+    fun onBackPressed() {
         val isPopped = navController.popBackStack()
 
         if (isPopped) {
