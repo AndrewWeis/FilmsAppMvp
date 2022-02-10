@@ -41,9 +41,9 @@ class FilmsFragment :
     private val binding get() = _binding!!
 
     private var listExtension: ListExtension? = null
+    private var messagesHolder: MessagesHolder? = null
     private val generator: FilmsGenerator = FilmsGenerator()
     private lateinit var adapter: FilmsAdapter
-    private lateinit var messagesHolder: MessagesHolder
 
     @InjectPresenter
     lateinit var presenter: FilmsPresenter
@@ -73,6 +73,8 @@ class FilmsFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        listExtension = null
+        messagesHolder = null
     }
 
     override fun showFilms(films: List<Film>, genres: List<String>, selectedGenreId: Int?) {
@@ -89,7 +91,7 @@ class FilmsFragment :
     }
 
     override fun showContentLoadingError(error: String) {
-        messagesHolder.showUnhiddenNetworkError(error) { presenter.onRepeatButtonClicked() }
+        messagesHolder?.showUnhiddenNetworkError(error) { presenter.onRepeatButtonClicked() }
     }
 
     override fun onFilmClick(film: Film) {
