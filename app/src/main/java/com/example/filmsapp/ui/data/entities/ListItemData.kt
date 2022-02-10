@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
  * Данные обходимые для [ListItem] жанра
  */
 data class GenreData(
+    val id: Int,
     var genre: String,
     var isSelected: Boolean
 )

@@ -12,7 +12,6 @@ import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.entities.Film
-import com.example.filmsapp.ui.data.entities.GenreData
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter.Companion.TYPE_FILM
@@ -76,8 +75,8 @@ class FilmsFragment :
         _binding = null
     }
 
-    override fun showFilms(items: List<Film>, selectedGenre: GenreData?) {
-        val listItems = generator.generateListItems(items, selectedGenre)
+    override fun showFilms(films: List<Film>, genres: List<String>, selectedGenreId: Int?) {
+        val listItems = generator.generateListItems(films, genres, selectedGenreId)
         adapter.addListItems(listItems)
     }
 
@@ -98,8 +97,8 @@ class FilmsFragment :
         navigate(action)
     }
 
-    override fun onGenreClick(genreData: GenreData) {
-        presenter.onGenreClicked(genreData)
+    override fun onGenreClick(genreId: Int) {
+        presenter.onGenreClicked(genreId)
     }
 
     private fun setUpAdapter() {

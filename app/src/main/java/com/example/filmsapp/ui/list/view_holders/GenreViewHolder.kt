@@ -45,7 +45,7 @@ open class GenreViewHolder(
 
     private fun setListener() {
         itemView.setOnClickListener {
-            listener.onGenreClick(genreData)
+            listener.onGenreClick(genreData.id)
         }
     }
 
@@ -53,6 +53,6 @@ open class GenreViewHolder(
      * ClickListener для жанра
      */
     interface GenreViewHolderListener {
-        fun onGenreClick(genreData: GenreData)
+        fun onGenreClick(genreId: Int)
     }
 }

@@ -9,7 +9,20 @@ import com.example.utils.ResourcesUtils.getString
  */
 class FilmsGenerator {
 
-    fun generateListItems(films: List<Film>, selectedGenre: GenreData?): List<ListItem> {
+    /**
+     * Создает список [ListItem]'ов
+     *
+     * @param films список фильмов
+     * @param genres список жанров
+     * @param selectedGenreId идентификатор выбранного жанра
+     */
+    fun generateListItems(
+        films: List<Film>,
+        genres: List<String>,
+        selectedGenreId: Int?
+    ): List<ListItem> {
+
+        val listItems: MutableList<ListItem> = mutableListOf()
 
         val genresHeaderSettings = Settings(
             leftMargin = 0f,
@@ -18,6 +31,15 @@ class FilmsGenerator {
             bottomMargin = 0f
         )
 
+        addHeaderToListItems(
+            listItems = listItems,
+            type = ListItemTypes.GENRES_HEADER,
+            stringRes = R.string.title_genres,
+            settings = genresHeaderSettings
+        )
+
+        addGenresToListItems(listItems, genres, selectedGenreId)
+
         val filmsHeaderSettings = Settings(
             leftMargin = 0f,
             rightMargin = 0f,
@@ -25,132 +47,137 @@ class FilmsGenerator {
             bottomMargin = 8f
         )
 
-        val listItems: MutableList<ListItem> = mutableListOf()
-
-        listItems.add(
-            ListItem(
-                type = ListItemTypes.GENRES_HEADER,
-                data = HeaderData(getString(R.string.title_genres)),
-                settings = genresHeaderSettings
-            )
+        addHeaderToListItems(
+            listItems = listItems,
+            type = ListItemTypes.FILMS_HEADER,
+            stringRes = R.string.title_films,
+            settings = filmsHeaderSettings
         )
 
-        val genresListItems = generateGenreListItems(films, selectedGenre)
-        listItems.addAll(genresListItems)
-
-        listItems.add(
-            ListItem(
-                type = ListItemTypes.FILMS_HEADER,
-                data = HeaderData(getString(R.string.title_films)),
-                settings = filmsHeaderSettings
-            )
-        )
-
-        val filmsListItems = generateFilmsListItems(films, selectedGenre)
-        listItems.addAll(filmsListItems)
+        addFilmsToListItems(listItems, films)
 
         return listItems
     }
 
     /**
-     * Преобразовывает лист фильмов полученных с сервера в лист [ListItem]'ов
-     * для отображения жанров.
+     * Добавляет заголовок в список [ListItem]'ов
      *
-     * @param films список фильмов с сервера
-     * @param selectedGenre выбранный жанр
+     * @param listItems элементы списка
+     * @param type тип заголовка
+     * @param stringRes строковый ресурс для заголовока
+     * @param settings настройки заголовка
      */
-    private fun generateGenreListItems(
-        films: List<Film>,
-        selectedGenre: GenreData?
-    ): List<ListItem> {
-        val genresList: MutableList<ListItem> = mutableListOf()
-
-        val genresFromFilms: MutableSet<String> = sortedSetOf()
-
-        films.forEach { film ->
-            film.genres?.forEach { genre ->
-                genresFromFilms.add(genre)
-            }
-        }
-
-        genresFromFilms.forEach {
-            val genre = firstCharToUpperCase(it)
-
-            if (selectedGenre != null && selectedGenre.genre == genre) {
-                genresList.add(
-                    ListItem(
-                        type = ListItemTypes.GENRE,
-                        data = GenreData(genre, true)
-                    )
-                )
-            } else {
-                genresList.add(
-                    ListItem(
-                        type = ListItemTypes.GENRE,
-                        data = GenreData(genre, false)
-                    )
-                )
-            }
-        }
-
-        return genresList
+    private fun addHeaderToListItems(
+        listItems: MutableList<ListItem>,
+        type: ListItemTypes?,
+        stringRes: Int,
+        settings: Settings
+    ) {
+        listItems.add(
+            ListItem(
+                type = type,
+                data = HeaderData(getString(stringRes)),
+                settings = settings
+            )
+        )
     }
 
     /**
-     * Преобразовывает лист фильмов полученных с сервера в лист [ListItem]'ов
-     * для отображения фильмов.
+     * Добавляет жанры в список [ListItem]'ов
      *
-     * @param films список фильмов с сервера
-     * @param selectedGenre выбранный жанр
+     * @param listItems элементы списка
+     * @param genres список жанров
+     * @param selectedGenreId идентификатор выбранного жанра
      */
-    private fun generateFilmsListItems(
-        films: List<Film>,
-        selectedGenre: GenreData?
-    ): List<ListItem> {
-        val filmsList: MutableList<ListItem> = mutableListOf()
-
-        var sortedFilms = films.sortedBy { it.localizedName }
-
-        if (selectedGenre != null) {
-            sortedFilms = sortedFilms.filter { film ->
-                film.genres?.contains(firstCharToLowerCase(selectedGenre.genre)) == true
+    private fun addGenresToListItems(
+        listItems: MutableList<ListItem>,
+        genres: List<String>,
+        selectedGenreId: Int?
+    ) {
+        for (i in genres.indices) {
+            if (selectedGenreId != null && genres[selectedGenreId] == genres[i]) {
+                addGenreToGenresListItems(listItems, genres[i], i, true)
+            } else {
+                addGenreToGenresListItems(listItems, genres[i], i, false)
             }
         }
+    }
 
-        for (i in sortedFilms.indices) {
+    /**
+     * Добавляет фильмы в список [ListItem]'ов
+     *
+     * @param listItems элементы списка
+     * @param films список фильмов
+     */
+    private fun addFilmsToListItems(
+        listItems: MutableList<ListItem>,
+        films: List<Film>,
+    ) {
+
+        val leftFilmSettings = Settings(
+            leftMargin = 16f,
+            rightMargin = 8f,
+            topMargin = 0f,
+            bottomMargin = 16f
+        )
+
+        val rightFilmSettings = Settings(
+            leftMargin = 8f,
+            rightMargin = 16f,
+            topMargin = 0f,
+            bottomMargin = 16f
+        )
+
+        for (i in films.indices) {
             if (i % 2 == 0) {
-                filmsList.add(
-                    ListItem(
-                        type = ListItemTypes.FILM,
-                        data = sortedFilms[i],
-                        settings = Settings(16f, 8f, 0f, 16f)
-                    )
-                )
+                addFilmToListItems(listItems, films[i], leftFilmSettings)
             } else {
-                filmsList.add(
-                    ListItem(
-                        type = ListItemTypes.FILM,
-                        data = sortedFilms[i],
-                        settings = Settings(8f, 16f, 0f, 16f)
-                    )
-                )
+                addFilmToListItems(listItems, films[i], rightFilmSettings)
             }
         }
-
-        return filmsList
     }
 
     /**
-     * Переводит первую букву строки в заглавную
+     * Добавляет жанр в список [ListItem]'ов
+     *
+     * @param listItems элементы списка
+     * @param genre жанр
+     * @param genreId идентификатор жанра
      */
-    private fun firstCharToUpperCase(str: String): String {
-        return str.replaceFirstChar { it.uppercase() }
+    private fun addGenreToGenresListItems(
+        listItems: MutableList<ListItem>,
+        genre: String,
+        genreId: Int,
+        isSelected: Boolean
+    ) {
+        val formattedGenre = genre.replaceFirstChar { it.uppercase() }
+
+        listItems.add(
+            ListItem(
+                type = ListItemTypes.GENRE,
+                data = GenreData(genreId, formattedGenre, isSelected)
+            )
+        )
     }
 
     /**
-     * Переводит первую букву строки в маленькую
+     * Добавляет фильм в список [ListItem]'ов
+     *
+     * @param listItems элементы списка
+     * @param film фильм
+     * @param settings настройки для фильма
      */
-    private fun firstCharToLowerCase(str: String): String {
-        return str.replaceFirstChar { it.lowercase() }
+    private fun addFilmToListItems(
+        listItems: MutableList<ListItem>,
+        film: Film,
+        settings: Settings
+    ) {
+        listItems.add(
+            ListItem(
+                type = ListItemTypes.FILM,
+                data = film,
+                settings = settings
+            )
+        )
     }
 }

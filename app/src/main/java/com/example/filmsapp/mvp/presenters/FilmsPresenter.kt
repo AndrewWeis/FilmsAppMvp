@@ -6,7 +6,6 @@ import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.base.BasePresenter
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.data.entities.Film
-import com.example.filmsapp.ui.data.entities.GenreData
 
 /**
  * Presenter для работы со списком фильмов
@@ -17,16 +16,19 @@ class FilmsPresenter(
 ) : BasePresenter<FilmsView>() {
 
     private var films: List<Film> = emptyList()
-    private var selectedGenre: GenreData? = null
+    private var genres: List<String> = emptyList()
+    private var selectedGenreId: Int? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         requestDataFromServer()
     }
 
-    fun onGenreClicked(genre: GenreData) {
-        selectedGenre = genre
-        viewState.showFilms(films, selectedGenre)
+    fun onGenreClicked(genreId: Int) {
+        selectedGenreId = genreId
+
+        val filteredFilmsList = filterFilmsByGenre()
+        viewState.showFilms(filteredFilmsList, genres, selectedGenreId)
     }
 
     fun onRepeatButtonClicked() {
@@ -40,9 +42,10 @@ class FilmsPresenter(
 
             override fun onSuccess(data: FilmResponse?) {
                 films = data?.films.orEmpty()
+                genres = extractGenresFromFilms()
 
                 viewState.endContentLoading()
-                viewState.showFilms(films, selectedGenre)
+                viewState.showFilms(films, genres, selectedGenreId)
             }
 
             override fun onError(error: String) {
@@ -50,5 +53,35 @@ class FilmsPresenter(
                 viewState.showContentLoadingError(error)
             }
         })
+    }
+
+    /**
+     * Фильтрует список фильмов по выбранному жанру
+     */
+    private fun filterFilmsByGenre(): List<Film> {
+        var sortedFilms = films.sortedBy { it.localizedName }
+
+        if (selectedGenreId != null) {
+            sortedFilms = sortedFilms.filter { film ->
+                film.genres?.contains(genres[selectedGenreId!!]) == true
+            }
+        }
+
+        return sortedFilms
+    }
+
+    /**
+     * Извлекает список жанров из фильмов
+     */
+    private fun extractGenresFromFilms(): List<String> {
+        val sortedGenres: MutableSet<String> = sortedSetOf()
+
+        films.forEach { film ->
+            film.genres?.forEach { genre ->
+                sortedGenres.add(genre)
+            }
+        }
+
+        return sortedGenres.toList()
     }
 }
