@@ -37,7 +37,7 @@
             tools:text="Между нами горы" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/year_genre_text"
+            android:id="@+id/genres_year_text"
             style="@style/Roboto.Gray.Size16.Zero_W"
             android:layout_marginTop="8dp"
             android:letterSpacing="0.01"
@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/year_genre_text"
+            app:layout_constraintTop_toBottomOf="@id/genres_year_text"
             tools:text="6.7" />
 
         <com.google.android.material.textview.MaterialTextView

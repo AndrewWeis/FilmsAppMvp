@@ -57,7 +57,7 @@ class DetailedFilmFragment :
 
     private fun setDataToViews(film: Film) {
         binding.titleText.text = film.localizedName
-        binding.yearGenreText.text = formYearGenreText(film.genres, film.year)
+        binding.genresYearText.text = formYearGenreText(film.genres, film.year)
         binding.rateText.text = formRatingText(film.rating)
         binding.descriptionText.text = film.description
 
