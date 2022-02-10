@@ -2,8 +2,6 @@ package com.example.filmsapp.ui.list.generators
 
 import com.example.filmsapp.R
 import com.example.filmsapp.ui.data.entities.*
-import com.example.filmsapp.ui.utils.firstCharToLowerCase
-import com.example.filmsapp.ui.utils.firstCharToUpperCase
 import com.example.utils.ResourcesUtils.getString
 
 /**
@@ -48,7 +46,7 @@ class FilmsGenerator {
         }
 
         genresFromFilms.forEach {
-            val genre = it.firstCharToUpperCase()
+            val genre = firstCharToUpperCase(it)
 
             if (selectedGenre != null && selectedGenre.genre == genre) {
                 genresList.add(ListItem(data = GenreData(genre, true)))
@@ -72,7 +70,7 @@ class FilmsGenerator {
 
         if (selectedGenre != null) {
             sortedFilms = sortedFilms.filter { film ->
-                film.genres?.contains(selectedGenre.genre.firstCharToLowerCase()) == true
+                film.genres?.contains(firstCharToLowerCase(selectedGenre.genre)) == true
             }
         }
 
@@ -93,5 +91,19 @@ class FilmsGenerator {
                 )
             }
         }
+    }
+
+    /**
+     * Переводит первую букву строки в заглавную
+     */
+    private fun firstCharToUpperCase(str: String): String {
+        return str.replaceFirstChar { it.uppercase() }
+    }
+
+    /**
+     * Переводит первую букву строки в маленькую
+     */
+    private fun firstCharToLowerCase(str: String): String {
+        return str.replaceFirstChar { it.lowercase() }
     }
 }
