@@ -53,7 +53,7 @@ open class FilmViewHolder(
 
     private fun setFilmMargins() {
         setMargins(
-            binding.filmLayout,
+            binding.filmView,
             settings.leftMargin,
             settings.rightMargin,
             settings.topMargin,

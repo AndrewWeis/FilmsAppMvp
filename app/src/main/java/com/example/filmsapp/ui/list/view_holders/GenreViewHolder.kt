@@ -37,9 +37,9 @@ open class GenreViewHolder(
 
     private fun showSelectedGenre() {
         if (genreData.isSelected) {
-            binding.genreLayout.setBackgroundColor(getColor(R.color.teal_D7F6F8))
+            binding.genreView.setBackgroundColor(getColor(R.color.teal_D7F6F8))
         } else {
-            binding.genreLayout.setBackgroundColor(getColor(R.color.white_FFFFFF))
+            binding.genreView.setBackgroundColor(getColor(R.color.white_FFFFFF))
         }
     }
 
