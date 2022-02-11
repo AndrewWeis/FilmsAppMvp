@@ -1,6 +1,6 @@
 package com.example.filmsapp.ui.activities.base
 
-import com.arellomobile.mvp.MvpAppCompatActivity
+import moxy.MvpAppCompatActivity
 
 /**
  * Базовая Activity

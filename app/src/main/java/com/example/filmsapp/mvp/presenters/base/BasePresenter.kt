@@ -1,7 +1,7 @@
 package com.example.filmsapp.mvp.presenters.base
 
-import com.arellomobile.mvp.MvpPresenter
 import com.example.filmsapp.mvp.views.base.BaseView
+import moxy.MvpPresenter
 
 /**
  * Базовый presenter

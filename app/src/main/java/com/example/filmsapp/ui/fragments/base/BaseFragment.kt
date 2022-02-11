@@ -1,6 +1,6 @@
 package com.example.filmsapp.ui.fragments.base
 
-import com.arellomobile.mvp.MvpAppCompatFragment
+import moxy.MvpAppCompatFragment
 
 /**
  * Базовый Fragment

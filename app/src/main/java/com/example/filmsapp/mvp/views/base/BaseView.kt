@@ -1,6 +1,6 @@
 package com.example.filmsapp.mvp.views.base
 
-import com.arellomobile.mvp.MvpView
+import moxy.MvpView
 
 /**
  * Базовый интерфейс, наследуемый от MvpView из библиотеки Moxy

@@ -1,11 +1,11 @@
 package com.example.filmsapp.mvp.presenters
 
-import com.arellomobile.mvp.InjectViewState
 import com.example.filmsapp.data.network.entities.Film
 import com.example.filmsapp.data.network.entities.FilmResponse
 import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.base.BasePresenter
 import com.example.filmsapp.mvp.views.FilmsView
+import moxy.InjectViewState
 
 /**
  * Presenter для работы со списком фильмов

@@ -1,9 +1,9 @@
 package com.example.filmsapp.mvp.views
 
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.example.filmsapp.mvp.views.base.BaseView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.SingleStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 /**
  * Интерфейс для отображения состояний загрузки / ошибки

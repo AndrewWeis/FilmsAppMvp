@@ -90,9 +90,9 @@ dependencies {
     implementation "io.insert-koin:koin-android:3.1.2"
 
     // Moxy
-    implementation 'tech.schoolhelper:moxy-x:1.7.0'
-    implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
-    kapt 'tech.schoolhelper:moxy-x-compiler:1.7.0'
+    implementation "com.github.moxy-community:moxy-ktx:2.2.2"
+    implementation "com.github.moxy-community:moxy-androidx:2.2.2"
+    kapt "com.github.moxy-community:moxy-compiler:2.2.2"
 
     // AppBarProvider
     implementation 'com.github.sequenia:App-Bar-Provider:1.1.1'

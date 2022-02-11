@@ -1,8 +1,8 @@
 package com.example.filmsapp.mvp.views
 
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.example.filmsapp.data.network.entities.Film
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 /**
  * Интерфейс для отображения списка фильмов

@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.filmsapp.R
 import com.example.filmsapp.data.network.entities.Film
 import com.example.filmsapp.databinding.FilmsFragmentBinding
@@ -26,6 +24,7 @@ import com.example.filmsapp.ui.list.view_holders.GenreViewHolder.GenreViewHolder
 import com.example.utils.snackbar.MessagesHolder
 import com.google.android.material.textview.MaterialTextView
 import com.sequenia.app_bar_provider.AppBarSettings
+import moxy.ktx.moxyPresenter
 import org.koin.android.ext.android.get
 
 /**
@@ -46,12 +45,8 @@ class FilmsFragment :
     private val generator: FilmsGenerator = FilmsGenerator()
     private lateinit var adapter: FilmsAdapter
 
-    @InjectPresenter
-    lateinit var presenter: FilmsPresenter
-
-    @ProvidePresenter
-    fun provideFilmsPresenter(): FilmsPresenter {
-        return get<FilmsPresenter>()
+    private val presenter by moxyPresenter {
+        get<FilmsPresenter>()
     }
 
     override fun onCreateView(
