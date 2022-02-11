@@ -50,7 +50,7 @@ class FilmsFragment :
 
     @ProvidePresenter
     fun provideFilmsPresenter(): FilmsPresenter {
-        return FilmsPresenter(filmModel = get())
+        return get<FilmsPresenter>()
     }
 
     override fun onCreateView(

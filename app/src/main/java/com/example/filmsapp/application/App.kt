@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import com.example.filmsapp.di.modelsModule
 import com.example.filmsapp.di.networkModule
+import com.example.filmsapp.di.presenterModule
 import com.example.utils.image_loader.GlideLoaderCreator
 import com.example.utils.image_loader.ImageLoader
 import org.koin.android.ext.koin.androidContext
@@ -27,7 +28,7 @@ class App : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(listOf(modelsModule, networkModule))
+            modules(listOf(modelsModule, networkModule, presenterModule))
         }
     }
 
