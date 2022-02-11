@@ -16,32 +16,24 @@
         android:paddingBottom="4dp"
         tools:ignore="RtlSymmetry">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/snackbar_message_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center|start"
+            style="@style/Roboto.White.Size15.Zero_W"
+            android:layout_marginEnd="5dp"
             android:lineSpacingExtra="2sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="@color/white_FFFFFF"
-            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@id/snackbar_action_button"
             app:layout_constraintEnd_toStartOf="@id/snackbar_action_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/snackbar_action_button"
             tools:text="Ошибка подключения сети" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/snackbar_action_button"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/black_232323"
+            style="@style/TextButton.Purple.Size14.WW"
+            android:layout_marginEnd="8dp"
             android:letterSpacing="0"
-            android:textColor="@color/purple_A77DFF"
-            android:textSize="14sp"
-            app:backgroundTint="@color/black_232323"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

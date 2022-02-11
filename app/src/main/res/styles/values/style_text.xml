@@ -58,11 +58,20 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="Roboto.White.Size15">
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="Roboto.Black.Size14">
         <item name="android:textSize">14sp</item>
     </style>
 
     <!-- Text stretching -->
+    <style name="Roboto.White.Size15.Zero_W">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="Roboto.Black.Size26.Zero_W">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
