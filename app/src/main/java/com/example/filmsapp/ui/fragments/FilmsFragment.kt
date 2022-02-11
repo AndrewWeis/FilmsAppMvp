@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -83,11 +84,11 @@ class FilmsFragment :
     }
 
     override fun startContentLoading() {
-        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.isVisible = true
     }
 
     override fun endContentLoading() {
-        binding.progressBar.visibility = View.GONE
+        binding.progressBar.isVisible = false
     }
 
     override fun showContentLoadingError(error: String) {
