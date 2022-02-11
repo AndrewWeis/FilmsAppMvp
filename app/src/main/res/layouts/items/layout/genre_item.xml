@@ -4,6 +4,7 @@
     android:id="@+id/genre_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_genre_view"
     android:paddingStart="16dp"
     android:paddingTop="10dp"
     android:paddingEnd="16dp"

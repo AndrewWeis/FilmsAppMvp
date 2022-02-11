@@ -7,7 +7,6 @@ import com.example.filmsapp.databinding.GenreItemBinding
 import com.example.filmsapp.ui.data.entities.GenreData
 import com.example.filmsapp.ui.data.entities.ListItem
 import com.example.filmsapp.ui.list.view_holders.base.BaseViewHolder
-import com.example.utils.ResourcesUtils.getColor
 
 /**
  * View Holder для жанров
@@ -36,11 +35,7 @@ open class GenreViewHolder(
     }
 
     private fun showSelectedGenre() {
-        if (genreData.isSelected) {
-            binding.genreView.setBackgroundColor(getColor(R.color.teal_D7F6F8))
-        } else {
-            binding.genreView.setBackgroundColor(getColor(R.color.white_FFFFFF))
-        }
+        binding.genreView.isPressed = genreData.isSelected
     }
 
     private fun setListener() {
