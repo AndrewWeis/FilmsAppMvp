@@ -111,7 +111,7 @@ class FilmsGenerator {
         selectedGenreId: Int?
     ) {
         for (i in genres.indices) {
-            if (selectedGenreId != null && genres[selectedGenreId] == genres[i]) {
+            if (selectedGenreId != null && selectedGenreId == i) {
                 addGenreToGenresListItems(listItems, genres[i], i, true)
             } else {
                 addGenreToGenresListItems(listItems, genres[i], i, false)
