@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CircularProgressIndicator">
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <style name="CircularProgressIndicator.Teal">
+        <item name="indicatorColor">@color/teal_57C6DE</item>
+    </style>
+
+    <style name="CircularProgressIndicator.Teal.Size48">
+        <item name="indicatorSize">48dp</item>
+    </style>
+
+    <style name="CircularProgressIndicator.Teal.Size48.WW">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>
