@@ -35,7 +35,7 @@ open class GenreViewHolder(
     }
 
     private fun showSelectedGenre() {
-        binding.genreView.isPressed = genreData.isSelected
+        binding.genreView.isSelected = genreData.isSelected
     }
 
     private fun setListener() {

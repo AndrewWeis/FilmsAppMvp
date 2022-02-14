@@ -2,8 +2,10 @@ package com.example.filmsapp.ui.list.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.filmsapp.ui.data.entities.*
-import com.example.filmsapp.ui.list.adapters.base.BaseSequenceAdapter
+import com.example.filmsapp.ui.data.entities.ListItem
+import com.example.filmsapp.ui.data.entities.ListItemIds
+import com.example.filmsapp.ui.data.entities.ListItemTypes
+import com.example.filmsapp.ui.list.adapters.base.BaseAdapter
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmsapp.ui.list.view_holders.FilmViewHolder.FilmViewHolderListener
 import com.example.filmsapp.ui.list.view_holders.GenreViewHolder
@@ -18,23 +20,16 @@ class FilmsAdapter(
     layoutInflater: LayoutInflater,
     val genreViewHolderListener: GenreViewHolderListener,
     val filmViewHolderListener: FilmViewHolderListener
-) :
-    BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater) {
+) : BaseAdapter<ListItem, BaseViewHolder>(layoutInflater) {
 
-    override fun onBindViewHolder(holder: BaseViewHolder, item: ListItem) {
-        when (holder) {
-            is HeaderViewHolder -> holder.bind(item)
-            is GenreViewHolder -> holder.bind(item, genreViewHolderListener)
-            is FilmViewHolder -> holder.bind(item, filmViewHolderListener)
+    override fun getItemViewType(item: ListItem): Int {
+        return when (item.type) {
+            ListItemTypes.HEADER -> { getTypeForHeaderById(item.id) }
+            ListItemTypes.FILM -> TYPE_FILM
+            ListItemTypes.RADIO_BUTTON -> TYPE_GENRE
+            else -> NOT_FOUND
         }
     }
-
-    override fun getTypeSequence() = intArrayOf(
-        TYPE_GENRES_HEADER,
-        TYPE_GENRE,
-        TYPE_FILMS_HEADER,
-        TYPE_FILM
-    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
@@ -45,18 +40,24 @@ class FilmsAdapter(
         }
     }
 
-    override fun getItemViewType(item: ListItem): Int {
-        return when (item.type) {
-            ListItemTypes.FILMS_HEADER -> TYPE_FILMS_HEADER
-            ListItemTypes.FILM -> TYPE_FILM
-            ListItemTypes.GENRES_HEADER -> TYPE_GENRES_HEADER
-            ListItemTypes.GENRE -> TYPE_GENRE
-            else -> NOT_FOUND
+    override fun onBindViewHolder(holder: BaseViewHolder, item: ListItem) {
+        when (holder) {
+            is HeaderViewHolder -> holder.bind(item)
+            is GenreViewHolder -> holder.bind(item, genreViewHolderListener)
+            is FilmViewHolder -> holder.bind(item, filmViewHolderListener)
         }
     }
 
     fun addListItems(listItems: List<ListItem>) {
         updateItems(listItems)
+    }
+
+    private fun getTypeForHeaderById(id: String?): Int {
+        return when (id) {
+            ListItemIds.FILMS_HEADER_ID -> TYPE_FILMS_HEADER
+            ListItemIds.GENRES_HEADER_ID -> TYPE_GENRES_HEADER
+            else -> NOT_FOUND
+        }
     }
 
     companion object {

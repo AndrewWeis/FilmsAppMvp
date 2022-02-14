@@ -40,15 +40,6 @@ enum class ListItemTypes {
     // ListItem с Switch элементом
     SWITCH,
 
-    // ListItem c элементом жанр
-    GENRE,
-
     // ListItem c элементом фильм
     FILM,
-
-    // ListItem c элементом заголовок для жанров
-    GENRES_HEADER,
-
-    // ListItem c элементом заголовок для фильмов
-    FILMS_HEADER
 }

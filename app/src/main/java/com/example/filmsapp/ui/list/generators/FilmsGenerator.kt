@@ -48,7 +48,8 @@ class FilmsGenerator {
 
         addHeaderToListItems(
             listItems = listItems,
-            type = ListItemTypes.FILMS_HEADER,
+            type = ListItemTypes.HEADER,
+            id = ListItemIds.FILMS_HEADER_ID,
             stringRes = R.string.title_films,
             settings = filmsHeaderSettings
         )
@@ -69,7 +70,8 @@ class FilmsGenerator {
 
         addHeaderToListItems(
             listItems = listItems,
-            type = ListItemTypes.GENRES_HEADER,
+            type = ListItemTypes.HEADER,
+            id = ListItemIds.GENRES_HEADER_ID,
             stringRes = R.string.title_genres,
             settings = genresHeaderSettings
         )
@@ -86,12 +88,14 @@ class FilmsGenerator {
     private fun addHeaderToListItems(
         listItems: MutableList<ListItem>,
         type: ListItemTypes?,
+        id: String?,
         stringRes: Int,
         settings: Settings
     ) {
         listItems.add(
             ListItem(
                 type = type,
+                id = id,
                 data = HeaderData(getString(stringRes)),
                 settings = settings
             )
@@ -170,7 +174,7 @@ class FilmsGenerator {
 
         listItems.add(
             ListItem(
-                type = ListItemTypes.GENRE,
+                type = ListItemTypes.RADIO_BUTTON,
                 data = GenreData(genreId, formattedGenre, isSelected)
             )
         )
