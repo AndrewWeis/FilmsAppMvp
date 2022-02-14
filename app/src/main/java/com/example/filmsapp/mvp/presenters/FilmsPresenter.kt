@@ -61,9 +61,9 @@ class FilmsPresenter(
     private fun filterFilmsByGenre(): List<Film> {
         var sortedFilms = films.sortedBy { it.localizedName }
 
-        if (selectedGenreId != null) {
+        selectedGenreId?.let { id ->
             sortedFilms = sortedFilms.filter { film ->
-                film.genres?.contains(genres[selectedGenreId!!]) == true
+                film.genres?.contains(genres[id]) == true
             }
         }
 
