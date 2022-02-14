@@ -135,7 +135,6 @@ class FilmsFragment :
     }
 
     private fun setUpSnackBar(view: View) {
-        val customView = layoutInflater.inflate(R.layout.snackbar_view, null)
-        messagesHolder = MessagesHolder(viewLifecycleOwner, view, customView)
+        messagesHolder = MessagesHolder(viewLifecycleOwner, view)
     }
 }

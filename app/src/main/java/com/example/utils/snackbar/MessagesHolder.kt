@@ -2,6 +2,7 @@ package com.example.utils.snackbar
 
 import DefaultSnackBarHolder
 import android.view.View
+import android.view.View.inflate
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmsapp.R
 import com.example.utils.ResourcesUtils.getString
@@ -12,11 +13,10 @@ import com.example.utils.ResourcesUtils.getString
 class MessagesHolder(
     lifecycleOwner: LifecycleOwner,
     view: View,
-    customView: View?
 ) {
-    private var snackBarHolder =
-        DefaultSnackBarHolder(lifecycleOwner, view, customView)
+    private val customView = inflate(view.context, R.layout.snackbar_view, null)
 
+    private var snackBarHolder = DefaultSnackBarHolder(lifecycleOwner, view, customView)
     private var infoSnackBarHolder = DefaultSnackBarHolder(lifecycleOwner, view, customView)
 
     fun showNetworkError(message: String) {
