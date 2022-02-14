@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmsapp.R
 import com.example.filmsapp.data.entities.Film
 import com.example.filmsapp.databinding.FilmsFragmentBinding
 import com.example.filmsapp.mvp.presenters.FilmsPresenter
+import com.example.filmsapp.mvp.views.ContentLoading
 import com.example.filmsapp.mvp.views.FilmsView
 import com.example.filmsapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmsapp.ui.list.adapters.FilmsAdapter
@@ -34,6 +34,7 @@ class FilmsFragment :
     BaseWithAppBarNavigationFragment(),
     AppBarSettings,
     FilmsView,
+    ContentLoading,
     FilmViewHolderListener,
     GenreViewHolderListener {
 
@@ -78,14 +79,6 @@ class FilmsFragment :
         adapter.addListItems(listItems)
     }
 
-    override fun startContentLoading() {
-        binding.progressBar.isVisible = true
-    }
-
-    override fun endContentLoading() {
-        binding.progressBar.isVisible = false
-    }
-
     override fun showContentLoadingError(error: String) {
         messagesHolder?.showUnhiddenNetworkError(error) { presenter.onRepeatButtonClicked() }
     }
@@ -97,6 +90,14 @@ class FilmsFragment :
 
     override fun onGenreClick(genreId: Int) {
         presenter.onGenreClicked(genreId)
+    }
+
+    override fun getContentView(): View {
+        return binding.filmsList
+    }
+
+    override fun getContentLoadingView(): View {
+        return binding.progressBar
     }
 
     private fun setUpAdapter() {
