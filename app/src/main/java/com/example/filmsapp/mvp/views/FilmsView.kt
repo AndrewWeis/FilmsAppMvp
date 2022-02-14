@@ -1,6 +1,6 @@
 package com.example.filmsapp.mvp.views
 
-import com.example.filmsapp.data.network.entities.Film
+import com.example.filmsapp.data.entities.Film
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 

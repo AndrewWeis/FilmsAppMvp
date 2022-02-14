@@ -1,4 +1,4 @@
-package com.example.filmsapp.data.network.entities
+package com.example.filmsapp.data.entities
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

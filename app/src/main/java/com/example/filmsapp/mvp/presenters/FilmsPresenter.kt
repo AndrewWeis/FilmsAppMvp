@@ -1,6 +1,6 @@
 package com.example.filmsapp.mvp.presenters
 
-import com.example.filmsapp.data.network.entities.Film
+import com.example.filmsapp.data.entities.Film
 import com.example.filmsapp.data.network.entities.FilmResponse
 import com.example.filmsapp.mvp.models.FilmModel
 import com.example.filmsapp.mvp.presenters.base.BasePresenter

@@ -14,7 +14,7 @@
             app:destination="@id/detailedFilmFragment">
             <argument
                 android:name="film"
-                app:argType="com.example.filmsapp.data.network.entities.Film" />
+                app:argType="com.example.filmsapp.data.entities.Film" />
         </action>
     </fragment>
     <fragment
@@ -23,6 +23,6 @@
         tools:layout="@layout/detailed_film_fragment">
         <argument
             android:name="film"
-            app:argType="com.example.filmsapp.data.network.entities.Film" />
+            app:argType="com.example.filmsapp.data.entities.Film" />
     </fragment>
 </navigation>
