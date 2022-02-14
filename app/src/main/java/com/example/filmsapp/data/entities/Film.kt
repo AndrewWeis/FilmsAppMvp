@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 /**
- * Модель фильма с сервера
+ * Модель фильма
  */
 @Parcelize
 data class Film(
