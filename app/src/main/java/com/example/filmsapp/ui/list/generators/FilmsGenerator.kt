@@ -25,22 +25,20 @@ class FilmsGenerator {
 
         val listItems: MutableList<ListItem> = mutableListOf()
 
-        val genresHeaderSettings = Settings(
-            leftMargin = 0f,
-            rightMargin = 0f,
-            topMargin = 8f,
-            bottomMargin = 0f
-        )
-
-        addHeaderToListItems(
-            listItems = listItems,
-            type = ListItemTypes.GENRES_HEADER,
-            stringRes = R.string.title_genres,
-            settings = genresHeaderSettings
-        )
-
+        addGenresHeaderToListItems(listItems)
         addGenresToListItems(listItems, genres, selectedGenreId)
+        addFilmsHeaderToListItems(listItems)
+        addFilmsToListItems(listItems, films)
 
+        return listItems
+    }
+
+    /**
+     * Добавляет заголовок для фильмов в список [ListItem]'ов
+     *
+     * @param listItems элементы списка
+     */
+    private fun addFilmsHeaderToListItems(listItems: MutableList<ListItem>) {
         val filmsHeaderSettings = Settings(
             leftMargin = 0f,
             rightMargin = 0f,
@@ -54,10 +52,27 @@ class FilmsGenerator {
             stringRes = R.string.title_films,
             settings = filmsHeaderSettings
         )
+    }
 
-        addFilmsToListItems(listItems, films)
+    /**
+     * Добавляет заголовок для жанров в список [ListItem]'ов
+     *
+     * @param listItems элементы списка
+     */
+    private fun addGenresHeaderToListItems(listItems: MutableList<ListItem>) {
+        val genresHeaderSettings = Settings(
+            leftMargin = 0f,
+            rightMargin = 0f,
+            topMargin = 8f,
+            bottomMargin = 0f
+        )
 
-        return listItems
+        addHeaderToListItems(
+            listItems = listItems,
+            type = ListItemTypes.GENRES_HEADER,
+            stringRes = R.string.title_genres,
+            settings = genresHeaderSettings
+        )
     }
 
     /**
