@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_title_text"
+    style="@style/Roboto.White.Size18.WW"
+    android:ellipsize="end"
+    android:letterSpacing="0.01"
+    android:lineSpacingExtra="1sp"
+    android:maxLines="1"
+    android:paddingEnd="16dp"
+    android:text="@string/title_films"
+    tools:ignore="RtlSymmetry"/>

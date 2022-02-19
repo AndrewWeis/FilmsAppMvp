@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="View"/>
+
+    <style name="View.Selector">
+        <item name="android:background">@drawable/bg_genre_view</item>
+    </style>
+
+    <style name="View.Selector.MW">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

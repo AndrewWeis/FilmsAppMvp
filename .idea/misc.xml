@@ -11,6 +11,40 @@
         <entry key="..\:/Dev mobile/TechTask/FilmsApp/app/src/main/res/layout/item_genre.xml" value="0.2650918635170604" />
         <entry key="..\:/Dev mobile/TechTask/FilmsApp/app/src/main/res/layout/item_genre_btn.xml" value="0.152" />
         <entry key="..\:/Dev mobile/TechTask/FilmsApp/app/src/main/res/layout/item_title.xml" value="0.4" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/drawable/loading_img.xml" value="0.290625" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/fragment_detailed_film.xml" value="0.14375" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/fragment_films_list.xml" value="0.254981884057971" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/item_film.xml" value="0.14375" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/item_genre.xml" value="0.18697916666666667" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layout/item_title.xml" value="0.254981884057971" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.24682971014492755" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/fragments/layout/fragment_detailed_film.xml" value="0.264" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/fragments/layout/fragment_films.xml" value="0.2" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/fragments/layout/fragment_films_list.xml" value="0.254981884057971" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/items/layout/item_film.xml" value="0.24682971014492755" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/items/layout/item_genre.xml" value="0.24682971014492755" />
+        <entry key="..\:/Work/FilmsApp/FilmsApp/app/src/main/res/layouts/items/layout/item_title.xml" value="0.254981884057971" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/drawable/bg_genre.xml" value="0.290625" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/drawable/bg_genre_selected_state.xml" value="0.290625" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/drawable/ic_broken_image.xml" value="0.290625" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.290625" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/drawable/ic_loading.xml" value="0.290625" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.2128623188405797" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/activities/layout/main_activity.xml" value="0.19021739130434784" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/appbars/toolbars/layout/app_bar.xml" value="0.6" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/appbars/toolbars/layout/main_toolbar.xml" value="0.19021739130434784" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/fragments/layout/detailed_film_fragment.xml" value="0.4" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/fragments/layout/films_fragment.xml" value="0.359375" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/items/layout/film_item.xml" value="0.4" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/items/layout/genre_item.xml" value="0.1" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/items/layout/header_item.xml" value="0.6" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/items/layout/title_item.xml" value="0.17300724637681159" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/views/layout/snackbar_view.xml" value="0.5214368482039398" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/views/layout/toolbar_centered_title_view.xml" value="0.4" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/views/layout/toolbar_title_view.xml" value="0.19610507246376813" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/views/layout/view_tollbar_title.xml" value="0.20199275362318841" />
+        <entry key="..\:/Work/MvpFilmsApp/filmsappmvp/app/src/main/res/layouts/views/layout/view_toolbar_centered_title.xml" value="0.19610507246376813" />
       </map>
     </option>
   </component>

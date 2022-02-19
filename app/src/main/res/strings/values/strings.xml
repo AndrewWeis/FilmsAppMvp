@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FilmsApp</string>
+    <string name="kino_poisk">КиноПоиск</string>
+    <string name="year">год</string>
+</resources>
